@@ -38,6 +38,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 0.5em;
 }
 
+h2 {
+    margin-top: 20px;
+}
+
 pre {
 	font-size: 1.5em;
 }
@@ -99,13 +103,13 @@ ul {
     }
 }
 
-
-/* Fullscreen */
-html:-moz-full-screen,
-html:-webkit-full-screen {
-    background: red;
+video {
+    display: block;
+    margin-bottom: 10px;
 }
 
+
+/* Fullscreen */
 html:-moz-full-screen {
     background: red;
 }

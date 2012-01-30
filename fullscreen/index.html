@@ -15,10 +15,32 @@
             </h1>
 
             <section class="main-content">
-                <p>A demo of the Fullscreen API, currently implemented in Firefox and Google Chrome. Click this button to make the web site go full screen: <button id="view-fullscreen">Fullscreen</button></p>
+                <p>A demo of the Fullscreen API, currently implemented in Firefox and Google Chrome. Click this button to make the web site go full screen:</p>
 
+                <p>
+                    <button id="view-fullscreen">Fullscreen</button>
+                    <button id="cancel-fullscreen">Cancel fullscreen</button>
+                </p>
+
+                <p>Fullscreen state: I'm <b id="fullscreen-state">not </b>fullscreen</p>
                 <p>The background should also turn red when in fullscreen.</p>
+
+
+                <h2>Fullscren for elements</h2>
+                <p>You can also make just a certain element fullscreen. For instance, a video:</p>
+
+
+                <video id="mario-video" controls width="320">
+                    <source src="http://www.archive.org/download/Mario1_507/Mario1_507_512kb.mp4">
+                    <source src="http://www.archive.org/download/Mario1_507/Mario1_507.ogv">
+                </video>
+
+                <button id="video-fullscreen">View fullscreen video</button>
+
+                <p><i>Video taken from <a href="http://www.archive.org/details/Mario1_507">archive.org</a>.</i></p>
             </section>
+
+            <p>All the code is available in the <a href="https://github.com/robnyman/robnyman.github.com/tree/master/fullscreen">Fullscreen repository on GitHub</a>.</p>
         </div>
 
 
