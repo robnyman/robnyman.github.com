@@ -10,7 +10,7 @@
                 docElm.mozRequestFullScreen();
             }
             else if (docElm.webkitRequestFullScreen) {
-                docElm.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                docElm.webkitRequestFullScreen();
             }
         }, false);
     }
@@ -58,7 +58,11 @@
                 marioVideo.mozRequestFullScreen();
             }
             else if (marioVideo.webkitRequestFullScreen) {
-                marioVideo.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                marioVideo.webkitRequestFullScreen();
+                /*
+                    *Kept her for reference: keyboard support in full screen
+                    * marioVideo.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                */
             }
         }, false);
     }
