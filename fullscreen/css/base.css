@@ -117,3 +117,7 @@ html:-moz-full-screen {
 html:-webkit-full-screen {
     background: red;
 }
+
+html:fullscreen {
+    background: red;
+}
