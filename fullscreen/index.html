@@ -27,6 +27,12 @@
 
                 <input type="text" placeholder="Any test text">
 
+                <script>
+                    document.addEventListener("keydown", function (evt) {
+                        console.log("keydown. You pressed the " + evt.keyCode + " key")
+                    }, false);
+                </script>
+
 
                 <h2>Fullscren for elements</h2>
                 <p>You can also make just a certain element fullscreen. For instance, a video:</p>
