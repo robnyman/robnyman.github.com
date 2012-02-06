@@ -60,7 +60,7 @@
             else if (marioVideo.webkitRequestFullScreen) {
                 marioVideo.webkitRequestFullScreen();
                 /*
-                    *Kept her for reference: keyboard support in full screen
+                    *Kept here for reference: keyboard support in full screen
                     * marioVideo.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
                 */
             }
