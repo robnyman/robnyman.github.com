@@ -10,10 +10,10 @@ alert(battery)
 
     if (battery) {
         function setStatus () {
-            batteryLevel.innerHTML = b.level;
-            chargingStatus.innerHTML = b.charging;
-            batteryCharged.innerHTML = b.chargingTime;
-            batteryDischarged.innerHTML = b.dischargingTime;
+            batteryLevel.innerHTML = battery.level;
+            chargingStatus.innerHTML = battery.charging;
+            batteryCharged.innerHTML = battery.chargingTime;
+            batteryDischarged.innerHTML = battery.dischargingTime;
         }
         // Set initial status
         setStatus();
