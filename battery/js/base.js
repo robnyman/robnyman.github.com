@@ -10,6 +10,7 @@ alert(battery)
 
     if (battery) {
         function setStatus () {
+            alert("set status");
             batteryLevel.innerHTML = battery.level;
             chargingStatus.innerHTML = battery.charging;
             batteryCharged.innerHTML = battery.chargingTime;
