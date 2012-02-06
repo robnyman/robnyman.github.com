@@ -10,9 +10,9 @@ alert(battery)
 
     if (battery) {
         function setStatus () {
-            alert("set status");
-            batteryLevel.innerHTML = battery.level;
-            chargingStatus.innerHTML = battery.charging;
+            // alert("set status");
+            batteryLevel.innerHTML = battery.level * 100 + "%";
+            chargingStatus.innerHTML = (battery.charging)? "" : "not ";
             batteryCharged.innerHTML = battery.chargingTime;
             batteryDischarged.innerHTML = battery.dischargingTime;
         }
