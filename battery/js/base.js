@@ -15,6 +15,11 @@ alert(battery)
             batteryCharged.innerHTML = b.chargingTime;
             batteryDischarged.innerHTML = b.dischargingTime;
         }
+        // Set initial status
+        setStatus();
+    
+
+        // Set events
         battery.addEventListener("chargingchange", setStatus, false);
         battery.addEventListener("levelchange", setStatus, false);
     }
