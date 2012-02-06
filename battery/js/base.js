@@ -10,7 +10,7 @@
 
     if (battery) {
         function setStatus () {
-            console.log(battery);
+            console.log("Set status");
             batteryLevel.innerHTML = battery.level * 100 + "%";
             chargingStatus.innerHTML = (battery.charging)? "" : "not ";
             batteryCharged.innerHTML = battery.chargingTime;
