@@ -13,8 +13,8 @@
             console.log("Set status");
             batteryLevel.innerHTML = battery.level * 100 + "%";
             chargingStatus.innerHTML = (battery.charging)? "" : "not ";
-            batteryCharged.innerHTML = battery.chargingTime;
-            batteryDischarged.innerHTML = battery.dischargingTime;
+            batteryCharged.innerHTML = (battery.chargingTime === "Infinity")? "Infinity" : battery.chargingTime / 60;
+            batteryDischarged.innerHTML = (battery.dischargingTime === "Infinity")? "Infinity" : battery.dischargingTime / 60;
         }
         // Set initial status
         setStatus();
