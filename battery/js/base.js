@@ -21,8 +21,10 @@
     
 
         // Set events
-        battery.addEventListener("chargingchange", setStatus, false);
         battery.addEventListener("levelchange", setStatus, false);
+        battery.addEventListener("chargingchange", setStatus, false);
+        battery.addEventListener("chargingtimechange", setStatus, false);
+        battery.addEventListener("dischargingtimechange", setStatus, false);
     }
     else {
         batterySupported.innerHTML = "Battery API not supported on your device/computer";
