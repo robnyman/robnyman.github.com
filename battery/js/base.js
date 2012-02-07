@@ -11,10 +11,10 @@
     if (battery) {
         function setStatus () {
             console.log("Set status");
-            batteryLevel.innerHTML = battery.level * 100 + "%";
+            batteryLevel.innerHTML = parseInt(battery.level, 10) * 100 + "%";
             chargingStatus.innerHTML = (battery.charging)? "" : "not ";
-            batteryCharged.innerHTML = (battery.chargingTime === "Infinity")? "Infinity" : battery.chargingTime / 60;
-            batteryDischarged.innerHTML = (battery.dischargingTime === "Infinity")? "Infinity" : battery.dischargingTime / 60;
+            batteryCharged.innerHTML = (battery.chargingTime === "Infinity")? "Infinity" : parseInt(battery.chargingTime / 60, 10);
+            batteryDischarged.innerHTML = (battery.dischargingTime === "Infinity")? "Infinity" : parseInt(battery.dischargingTime / 60, 10);
         }
         // Set initial status
         setStatus();
