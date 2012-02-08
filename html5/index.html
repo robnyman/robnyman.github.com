@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 - Information and samples for HTML5 and related APIs - robertnyman.com</title>
+	<link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body id="index-page">
+	
+	<div id="container">
+		<header role="banner">
+			<h1>HTML5 - Information and samples for HTML5 and related APIs</h1>
+			<p>In this web site I have collected various code samples and tests for HTML5 and APIs related to it.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				<h2>Test pages</h2>
+				<nav role="navigation">
+					<ul class="navigation">
+						<li><a href="html5-simple-example.html">HTML5 example with new elements and WAI-ARIA landmark roles</a></li>
+						<li><a href="canvas/canvas-demo.html">Canvas</a></li>
+						<li><a href="data-attributes/data-attributes.html">Custom data attributes</a></li>
+						<li><a href="fileapi/fileapi.html">File API for reading file information and selecting multiple files</a></li>
+						<li><a href="fileapi-upload/fileapi-upload.html">File API for choosing, uploading, previewing and seeing progress for multiple files</a></li>
+						<li><a href="geolocation/current-location.html">Geolocation - show current location</a></li>
+						<li><a href="geolocation/current-location-and-directions.html">Geolocation - show directions</a></li>
+						<li><a href="history-api/history-api.html">History API</a></li>
+						<li><a href="webstorage/webStorage.html">localStorage &amp; sessionStorage (Web Storage)</a></li>
+						<li><a href="offline/offline.html">Offline Web Applications</a></li>
+						<li><a href="offline/online-offline-events.html">Online/Offline events</a></li>
+						<li><a href="offline/online-offline-polling.html">Online polling</a></li>
+						<li><a href="postMessage/postMessage.html">postMessage</a></li>
+						<li><a href="svg/svg.html">SVG (Scalable Vector Graphics)</a></li>
+						<li><a href="video/video-demo.html">Video</a></li>
+						<li><a href="webworkers/webWorkers.html">Web Workers</a></li>
+					</ul>
+				</nav>
+				
+				
+				<h2>Compatibility table</h2>
+
+				<table cellspacing="0">
+					<thead>
+						<tr>
+
+							<th>Feature</th>
+							<th class="last">Web browser support</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						<tr class="even">
+							<th><a href="canvas/canvas-demo.html">Canvas</a></th>
+							<td>
+								<ul class="browsers">								    
+								    
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 9.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 3.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 1.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 9.5+
+									</li>
+								</ul>
+							</td>
+						</tr>						
+						
+						<tr>
+							<th><a href="data-attributes/data-attributes.html">Custom data attributes</a></th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> all
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> all
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> all
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> all
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> all
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="data-attributes/data-attributes.html">Custom data attributes - dataset property</a></th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>
+
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox-faded.png"> (none)
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 9.0
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari-faded.png"> (none)
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 11.10
+									</li>
+								</ul>
+							</td>
+						</tr>
+
+						<tr>
+							<th><a href="fileapi/fileapi.html">File API</a></th>
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>								    
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.6+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+ (partial support)
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 11.50
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="fileapi-upload/fileapi-upload.html">File API for choosing, uploading, previewing and seeing progress for multiple files</a></th>
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.6+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+ (partial support)
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 11.50 (partial support)
+									</li>
+								</ul>
+							</td>
+						</tr>
+
+						<tr>
+							<th><a href="geolocation/current-location.html">Geolocation</a></th>
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 9.0+
+									</li>
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3,5+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> (iPhone)
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.6+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="history-api/history-api.html">History API</a></th>
+
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>								    
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 5.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 11.50
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr>
+							<th><a href="webstorage/webStorage.html">localStorage</a></th>
+
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 8.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 2.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 2.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.5+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr>
+							<th><a href="webstorage/webStorage.html">sessionStorage</a></th>
+
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 8.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 2.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.5+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="offline/offline.html">Offline Web Applications</a></th>
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>								    
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 1.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.6+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr>
+							<th><a href="offline/online-offline-events.html">Online/Offline events</a></th>
+							<td>
+								<ul class="browsers">
+								    
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 8.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 13+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 5.1+
+									</li>									
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 9.5+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="offline/online-offline-polling.html">Online polling</a></th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 8.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+									
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.0+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<th><a href="postMessage/postMessage.html">postMessage</a></th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 8.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 1.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 9.5+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th>
+								<a href="svg/svg.html">
+									SVG:<br>
+									- Inline as application/xhtml+xml or text/xml<br>
+									- Included as file via embed, object or iframe elements<br>
+									- Via JavaScript
+								</a>
+							</th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 9.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 3.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 1.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 9.5+
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr>
+							<th>
+								<a href="svg/svg.html">
+									SVG:<br>
+									- Inline in regular HTML documents (text/html)
+								</a>
+							</th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 9.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 5.x+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 7.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera-faded.png"> (none)
+									</li>
+								</ul>
+							</td>
+						</tr>
+						
+						<tr class="even">
+							<th><a href="video/video-demo.html">Video</a></th>
+							<td>
+								<ul class="browsers">
+									<li class="browser">
+										<img alt="Internet Explorer" src="images/ie.png"> 9.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 1.0+
+									</li>
+
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.5+
+									</li>
+								</ul>
+								<p>Notable here is that the main concern is codecs. Firefox and Opera support Ogg Theora and WebM, IE and Safari support H.264 and Google Chrome supports all three formats.</p>
+							</td>
+						</tr>
+						
+						<tr>
+							<th><a href="webworkers/webWorkers.html">Web Workers</a></th>
+							<td>
+								<ul class="browsers">
+								    <li class="browser">
+										<img alt="Internet Explorer" src="images/ie-faded.png"> (none)
+									</li>
+								    
+									<li class="browser">
+										<img alt="Firefox" src="images/firefox.png"> 3.5+
+									</li>
+
+									<li class="browser">
+										<img alt="Safari" src="images/safari.png"> 4.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Google Chrome" src="images/google-chrome.png"> 5.0+
+									</li>
+									
+									<li class="browser">
+										<img alt="Opera" src="images/opera.png"> 10.6+
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

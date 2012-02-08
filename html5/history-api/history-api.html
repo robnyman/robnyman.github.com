@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>History API - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		#history-links a {
+			display: block;
+		}
+		.no-support {
+			color: #f00;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>History API <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Use the History API to push and replace entries in the user's web browser history.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<div id="history-links">
+					<a href="monkey">Add "monkey" to history</a>
+					<a href="turtle">Add "turtle" to history</a>
+					<a href="hippo">Add "hippo" to history</a>
+				</div>
+				
+				<script>
+					(function () {
+						var historyLinks = document.getElementById("history-links");
+						if (typeof history.pushState !== "undefined") {
+							historyLinks.addEventListener("click", function (evt) {
+								var target = evt.target;
+								if (/^a$/i.test(target.nodeName)) {
+									var url = target.href,
+									title = target.innerHTML,
+									state = {
+										address : url
+									};
+
+									window.history.pushState(state, title, url);
+									evt.preventDefault();
+								}
+							}, false);
+						}
+						else {
+							historyLinks.className = "no-support";
+							historyLinks.innerHTML = "History API not supported in your web browser";
+						}
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+				<pre class="brush: js">
+					(function () {
+						var historyLinks = document.getElementById("history-links");
+						if (typeof history.pushState !== "undefined") {
+							historyLinks.addEventListener("click", function (evt) {
+								var target = evt.target;
+								if (/^a$/i.test(target.nodeName)) {
+									var url = target.href,
+									title = target.innerHTML,
+									state = {
+										address : url
+									};
+
+									window.history.pushState(state, title, url);
+									evt.preventDefault();
+								}
+							}, false);
+						}
+						else {
+							historyLinks.className = "no-support";
+							historyLinks.innerHTML = "History API not supported in your web browser";
+						}
+					})();
+				</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

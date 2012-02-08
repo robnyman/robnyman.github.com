@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Web Workers - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Web Workers <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using Web Workers for background computations and processes which won't affect the existing GUI. While the worker is running, you can click, select and do anything in the web browser without any delay.</p>
+			<p>This demo will count up from the number you provide, with the value of 1 in each step, up to 1 000 000.</p>
+			<p><em>Warning!</em> Might be processor-intensive.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<p>
+					<label for="worker-start-value">
+						<b>Start value</b>
+					</label><br>
+					<input type="text" id="worker-start-value" value="0">
+				</p>
+				<p>	
+					<input id="start-worker" type="button" value="Start Worker">
+					<input id="stop-worker" type="button" value="Stop Worker">
+				</p>
+				<h3>Web Worker results:</h3>
+				<p id="worker-results"> (not started yet)</p>
+				<script>
+					(function () {
+						var worker;
+						function createWorker () {
+							worker = new Worker("worker.js");
+						}
+						
+						document.getElementById("start-worker").onclick = function () {
+							createWorker();
+							worker.postMessage(document.getElementById("worker-start-value").value);
+							
+							worker.onmessage = function (evt) {
+								document.getElementById("worker-results").innerHTML = evt.data;
+							};
+
+							worker.onerror = function (evt) {
+								document.getElementById("worker-results").innerHTML = "An error occurred";
+							};
+						};
+						
+						document.getElementById("stop-worker").onclick = function () {
+							if (worker) {
+								worker.terminate();
+							}
+						};
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+<pre class="brush: js">
+	(function () {
+		var worker;
+		function createWorker () {
+			worker = new Worker("worker.js");
+		}
+		
+		document.getElementById("start-worker").onclick = function () {
+			createWorker();
+			worker.postMessage(document.getElementById("worker-start-value").value);
+			
+			worker.onmessage = function (evt) {
+				document.getElementById("worker-results").innerHTML = evt.data;
+			};
+
+			worker.onerror = function (evt) {
+				document.getElementById("worker-results").innerHTML = "An error occurred";
+			};
+		};
+		
+		document.getElementById("stop-worker").onclick = function () {
+			if (worker) {
+				worker.terminate();
+			}
+		};
+	})();
+</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

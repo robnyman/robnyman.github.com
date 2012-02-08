@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Video - Web browser native video playback - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		video {
+			display: block;
+			margin: 20px auto;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Video <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using the video element native in the web browser to playback a video.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<video id="my-video" controls="controls">
+					<source src="http://robertnyman.com/video/swedish-flag.mp4">
+					<source src="http://robertnyman.com/video/swedish-flag.ogv">
+					<p>Sorry, your web browser doesn't support the video element</p>
+				</video>
+				
+				<button id="play-pause">
+					Play/pause
+				</button>
+				
+				<script>
+					(function () {
+						// var video = document.getElementById("my-video"),
+						// 							playPause = document.getElementById("play-pause");
+						
+						// video.removeAttribute("controls");
+					
+					
+var video = document.getElementById("my-video");
+						
+						
+window.addEventListener("loadedmetadata", function () {
+	//alert("Loaded");
+}, true);
+
+
+video.play();
+
+// video.addEventListener("timeupdate", function () {
+// 	console.log(video.currentTime);
+// }, false);
+
+						
+						return;
+							
+					    // Checking codec support
+					    if (video.canPlayType('video/ogg; codecs="theora, vorbis"')) {
+							video.play();
+						}
+						else {
+							alert("Evil browser with only licensed codec support!");
+						}
+							
+						
+						playPause.onclick = function () {
+							if (video.paused || video.ended) {
+								video.play();
+							}
+							else {
+								video.pause();
+							}
+						};
+					}());
+				</script>				
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	
+</body>
+</html>

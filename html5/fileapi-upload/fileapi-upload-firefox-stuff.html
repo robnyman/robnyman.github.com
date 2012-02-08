@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>File API - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+	<style>
+		#drop-area {
+			height: 50px;
+			text-align: center;
+			border: 2px dashed #ddd;
+			padding: 10px;
+			margin-bottom: 2em;
+		}
+		
+		#drop-area .drop-instructions {
+			display: block;
+		}
+		
+		#drop-area .drop-over {
+			display: none;
+			font-size: 25px;
+		}
+				
+		#drop-area.over {
+			background: #ffffa2;
+			border: 2px dashed #000;
+		}
+		
+		#drop-area.over .drop-instructions {
+			display: none;
+		}
+
+		#drop-area.over .drop-over {
+			display: block;
+			font-size: 25px;
+		}
+		
+		#drop-area.over .drop-over {
+			display: block;
+			font-size: 25px;
+		}
+		
+		
+		#file-list {
+			list-style: none;
+			margin-bottom: 3em;
+		}
+	
+		#file-list li {
+			border-bottom: 1px solid #000;
+			margin-bottom: 0.5em;
+			padding-bottom: 0.5em;
+		}
+
+		#file-list li.no-items {
+			border-bottom: none;
+		}
+		
+		#file-list div {
+			margin-bottom: 0.5em;
+		}
+		
+		#file-list li img {
+			max-width: 400px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>File API <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using the File API to easily control file interaction in web browsers.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<h2>File upload</h2>
+				<p>Browse and upload multiple files in one go by holding down Ctrl (Windows, Linux) or Command (Mac) when clicking on them in the file dialog. Information about the uploaded files will be listed below. NOTE: Safari seems to fail to read out any information about the actual files.</p>
+				
+				<h3>Choose file(s)</h3>
+				<p>
+					<input id="files-upload" type="file" multiple>
+				</p>
+				<p id="drop-area">
+					<span class="drop-instructions">or drag and drop files here</span>
+					<span class="drop-over">Drop files here!</span>
+				</p>
+				
+				<ul id="file-list">
+					<li class="no-items">(no files uploaded yet)</li>
+				</ul>
+				<script>
+					(function () {
+						var filesUpload = document.getElementById("files-upload"),
+							dropArea = document.getElementById("drop-area"),
+							fileList = document.getElementById("file-list");
+						
+						function traverseFiles (files) {
+							var li,
+								div,
+								img,
+								file,
+								reader,
+								fileInfo;
+							fileList.innerHTML = "";
+							
+							// Firefox
+							
+							/*
+								var xhr = new XMLHttpRequest();							
+								xhr.open("POST", "upload/upload.php");
+								xhr.overrideMimeType("text/plain; charset=x-user-defined-binary"); 
+								xhr.sendAsBinary(files[0].getAsBinary());
+							*/
+								
+							for (var i=0, l=files.length; i<l; i++) {
+								div = document.createElement("div");
+								li = document.createElement("li");
+								file = files[i];
+								
+								if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+									img = document.createElement("img");
+									reader = new FileReader();
+									reader.onload = (function (theImg) {
+										return function (evt) {
+											theImg.src = evt.target.result;
+										};
+									}(img));
+									reader.readAsDataURL(file);
+								}
+								
+								
+								
+								// Firefox. Chrome has no support for sendAsBinary
+								/*
+								reader = new FileReader();
+								reader.onload = (function (theImg) {
+									return function (evt) {
+										var xhr = new XMLHttpRequest();							
+										xhr.open("POST", "upload/upload.php");
+										xhr.sendAsBinary(evt.target.result);
+									};
+								}(img));
+								reader.readAsBinaryString(file);
+								*/
+								
+								// For Firefox, Chrome and Safari
+								var xhr = new XMLHttpRequest();
+								xhr.open("post", "upload/upload.php", true);
+								xhr.onreadystatechange = function() {
+								  if (this.readyState === 4) {
+										// File uploaded
+									}
+								};
+
+								// Upload file: Firefox, Google Chrome and Safari
+								xhr.setRequestHeader("Content-Type", "multipart/form-data");
+								xhr.setRequestHeader("X-File-Name", file.fileName);
+								xhr.setRequestHeader("X-File-Size", file.fileSize);
+								xhr.setRequestHeader("X-File-Type", file.type);
+
+								xhr.send(file);
+								
+								
+								fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
+								fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
+								fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
+								li.innerHTML = fileInfo;
+								
+								if (typeof img !== "undefined") {
+									li.appendChild(img);
+								}
+								fileList.appendChild(li);
+							}
+						};
+						
+						filesUpload.onchange = function () {
+							traverseFiles(this.files);
+						};
+						
+						dropArea.addEventListener("dragleave", function (evt) {
+							this.className = "";
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("dragenter", function (evt) {
+							this.className = "over";
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("dragover", function (evt) {
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("drop", function (evt) {
+							traverseFiles(evt.dataTransfer.files);
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);										
+					})();
+				</script>
+			</section>
+		</div>
+		
+		<div id="can-be-dragged" draggable></div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	
+	
+</body>
+</html>

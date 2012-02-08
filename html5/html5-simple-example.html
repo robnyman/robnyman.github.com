@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 example with new elements and WAI-ARIA landmark roles - robertnyman.com</title>
+	<link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body id="index-page">
+	
+	<div id="container">
+		<header role="banner">
+			<h1>HTML5 example <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>This page has valid simple HTML5 markup with new elements complemented with WAI-ARIA landmark roles for accessibility</p>
+		</header>
+		
+		<div id="demo-main" role="main">
+			<section id="demo-main-content">
+				<header>
+					<hgroup>
+						<h2>A title</h2>
+						<h3>Subtitle to the above title</h3>
+					</hgroup>
+				</header>	
+				<article>
+					<p>Some content, created <time datetime="2009-10-14">October 14th 2009</time></p>
+				</article>
+				<article>
+					<p>Some more content - i guess you get the drift by now</p>
+				</article>
+			</section>
+			
+			<aside id="demo-aside-content" role="complementary">
+				This is just a demo page to see HTML5 markup and WAI-ARIA landmark roles in action in a simple context
+			</aside>
+		</div>	
+			
+		<section>
+			<article>
+				<header>
+					<h2>The HTML code for this page</h2>
+				</header>
+				<pre class="brush: html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;HTML5 example with new elements and WAI-ARIA landmark roles&lt;/title&gt;
+	&lt;link rel="stylesheet" href="css/base.css" type="text/css" media="screen"&gt;
+	&lt;!--[if lte IE 8]&gt;
+		&lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+	&lt;![endif]--&gt;
+&lt;/head&gt;
+
+&lt;body id="index-page"&gt;
+
+	&lt;div id="container"&gt;
+		&lt;header role="banner"&gt;
+			&lt;h1&gt;HTML5 example with new elements and WAI-ARIA landmark roles&lt;/h1&gt;
+			&lt;p&gt;This page has valid simple HTML5 markup complemented with WAI-ARIA landmark roles for accessibility&lt;/p&gt;
+		&lt;/header&gt;
+
+		&lt;nav id="demo-top-nav"&gt;
+			&lt;ul&gt;
+				&lt;li&gt;&lt;a href="http://robertnyman.com/html5"&gt;HTML5 demos and samples' start page&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://robertnyman.com/"&gt;Robert's talk&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="http://robertnyman.com/javascript/"&gt;JavaScript compatibility tests&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/nav&gt;
+
+		&lt;div id="demo-main" role="main"&gt;
+			&lt;section id="demo-main-content"&gt;
+				&lt;header&gt;
+					&lt;hgroup&gt;
+						&lt;h2&gt;A title&lt;/h2&gt;
+						&lt;h3&gt;Subtitle to the above title&lt;/h3&gt;
+					&lt;/hgroup&gt;
+				&lt;/header&gt;
+					
+				&lt;article&gt;
+					&lt;p&gt;Some content, created &lt;time datetime="2009-10-14"&gt;October 14th 2009&lt;/time&gt;&lt;/p&gt;
+				&lt;/article&gt;
+				&lt;article&gt;
+					&lt;p&gt;Some more content - i guess you get the drift by now&lt;/p&gt;
+				&lt;/article&gt;
+
+				&lt;article&gt;
+					&lt;header&gt;
+						&lt;h2&gt;The HTML code for this page&lt;/h2&gt;
+					&lt;/header&gt;
+
+				&lt;/article&gt;
+			&lt;/section&gt;
+
+			&lt;aside id="demo-aside-content" role="complementary"&gt;
+				This is just a demo page to see HTML5 markup and WAI-ARIA landmark roles in action in a simple context
+			&lt;/aside&gt;
+		&lt;/div&gt;
+
+		&lt;footer id="page-footer" role="contentinfo"&gt;
+			Created by &lt;a href="http://robertnyman.com/"&gt;Robert Nyman&lt;/a&gt;
+		&lt;/footer&gt;
+	&lt;/div&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+			</article>
+		</section>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

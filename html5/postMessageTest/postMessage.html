@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage - send messages between iframes and windows - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		iframe {
+			width: 500px;
+			height: 300px;
+			margin: 20px auto;
+			border: 1px solid #000;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+	<script>
+		window.onload = function () {
+			var iframeWin = document.getElementById("da-iframe").contentWindow,
+				form = document.getElementById("the-form"),
+				myMessage = document.getElementById("my-message");
+			
+			myMessage.select();	
+			
+			form.onsubmit = function () {
+				iframeWin.postMessage(myMessage.value, "http://robertnyman.com");
+				return false;
+			};
+		};
+	</script>
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>postMessage <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using postMessage to post messages between windows &amp; iframes.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				<form id="the-form" action="/">
+					<input type="text" id="my-message" value="Your message">
+					<input type="submit" value="postMessage">
+				</form>
+
+				<iframe id="da-iframe" src="http://robertnyman.com/html5/postMessageTest/postMessageTarget.html"></iframe>
+
+				<h2>Code used in this page</h2>
+				<pre class="brush: js">
+					window.onload = function () {
+						var iframeWin = document.getElementById("da-iframe").contentWindow,
+							form = document.getElementById("the-form"),
+							myMessage = document.getElementById("my-message");
+
+						myMessage.select();	
+
+						form.onsubmit = function () {
+							iframeWin.postMessage(myMessage.value, "http://robertnyman.com");
+							return false;
+						};
+					};
+				</pre>
+
+				<h2>Code used in the iframe</h2>
+				<pre class="brush: js">
+					function displayMessage (evt) {
+						var message;
+						if (evt.origin !== "http://robertnyman.com") {
+							message = "You are not worthy";
+						}
+						else {
+							message = "I got " + evt.data + " from " + evt.origin;
+						}	
+						document.getElementById("received-message").innerHTML = message;
+					}
+
+					if (window.addEventListener) {
+						// For standards-compliant web browsers
+						window.addEventListener("message", displayMessage, false);
+					}
+					else {
+						window.attachEvent("onmessage", displayMessage);
+					}
+				</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

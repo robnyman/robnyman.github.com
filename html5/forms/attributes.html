@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms - robertnyman.com</title>
+        <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+        <style>
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+        </style>
+        <!--[if lte IE 8]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div id="container">
+            <header role="banner">
+                <h1>HTML5 Forms <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+                <p>Looking at new attributes for HTML5 forms.</p>
+            </header>
+
+            <div role="main">
+                <section id="main-content">
+
+                    <form action="attributes.html">
+
+                        <div>
+                            <h3>Autocomplete</h3>
+                            <input type="text" name="autocomplete" autocomplete="off">
+                        </div>
+
+                        <div>
+                            <h3>Autofocus</h3>
+                            <input type="text" name="autofocus" autofocus>
+                        </div>
+
+                        <div>
+                            <h3>Formaction</h3>
+                            <input type="submit" formaction="http://example.org/save" value="Save">
+                        </div>
+
+                        <div>
+                            <h3>Formenctype</h3>
+                            <input type="submit" formenctype="application/x-www-form-urlencoded" value="Save with enctype">
+                        </div>
+
+                        <div>
+                            <h3>Formmethod</h3>
+                            <input type="submit" formmethod="POST" value="Send as POST">
+                        </div>
+
+                        <div>
+                            <h3>Formnovalidate</h3>
+                            <p>Does the same thing as if the attribute novalidate had been applied to the &lt;form&gt; element.</p>
+                            <input type="submit" formnovalidate value="Don't validate">
+                        </div>
+
+                        <div>
+                            <h3>Formtarget</h3>
+                            <input type="submit" formtarget="_blank" value="Post to new tab/window">
+                        </div>
+
+                        <div>
+                            <h3>list</h3>
+                            <input type="text" name="characters" list="data-list">
+                            <datalist id="data-list">
+                                <option value="Hugo Reyes">
+                                <option value="Jack Shephard">
+                                <option value="James 'Sawyer' Ford">
+                                <option value="John Locke">
+                                <option value="Sayid Jarrah">
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <h3>max</h3>
+                            <input type="range" max="95">
+                        </div>
+
+                        <div>
+                            <h3>min</h3>
+                            <input type="range" min="2">
+                        </div>
+
+                        <div>
+                            <h3>multiple</h3>
+                            <input type="file" multiple>
+                        </div>
+
+                        <div>
+                            <h3>readonly</h3>
+                            <input type="text" readonly>
+                        </div>
+
+                        <div>
+                            <h3>required</h3>
+                            <input type="text" name="required" required>
+                        </div>
+
+                        <div>
+                            <h3>Pattern (only allows uppercase letters)</h3>
+                            <input type="text" pattern="[A-Z]*">
+                        </div>
+
+                        <div>
+                            <h3>Placeholder</h3>
+                            <input type="text" name="placeholder" placeholder="Enter text here">
+                        </div>
+
+                        <div>
+                            <h3>Spellcheck</h3>
+                            <input type="text" spellcheck="true">
+                        </div>
+
+                        <div>
+                            <h3>Step</h3>
+                            <input type="number" step="5">
+                        </div>
+
+
+
+
+
+
+                        <div>
+                            <input type="submit" value="Send">
+                        </div>
+                    </form>    
+
+
+
+                    <h2>Code used in this page</h2>
+
+                    <!-- Add class="brush: js" later -->
+                    <pre class="brush: html">
+&lt;div&gt;
+    &lt;h3&gt;Autocomplete&lt;/h3&gt;
+    &lt;input type="text" name="autocomplete" autocomplete="off"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Autofocus&lt;/h3&gt;
+    &lt;input type="text" name="autofocus" autofocus&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Formaction&lt;/h3&gt;
+    &lt;input type="submit" formaction="http://example.org/save" value="Save"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Formenctype&lt;/h3&gt;
+    &lt;input type="submit" formenctype="application/x-www-form-urlencoded" value="Save with enctype"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Formmethod&lt;/h3&gt;
+    &lt;input type="submit" formmethod="POST" value="Send as POST"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Formnovalidate&lt;/h3&gt;
+    &lt;p&gt;Does the same thing as if the attribute novalidate had been applied to the &lt;form&gt; element.&lt;/p&gt;
+    &lt;input type="submit" formnovalidate value="Don't validate"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Formtarget&lt;/h3&gt;
+    &lt;input type="submit" formtarget="_blank" value="Post to new tab/window"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;list&lt;/h3&gt;
+    &lt;input type="text" name="characters" list="data-list"&gt;
+    &lt;datalist id="data-list"&gt;
+        &lt;option value="Hugo Reyes"&gt;
+        &lt;option value="Jack Shephard"&gt;
+        &lt;option value="James 'Sawyer' Ford"&gt;
+        &lt;option value="John Locke"&gt;
+        &lt;option value="Sayid Jarrah"&gt;
+    &lt;/datalist&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;max&lt;/h3&gt;
+    &lt;input type="range" max="95"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;min&lt;/h3&gt;
+    &lt;input type="range" min="2"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;multiple&lt;/h3&gt;
+    &lt;input type="file" multiple&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;readonly&lt;/h3&gt;
+    &lt;input type="text" readonly&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;required&lt;/h3&gt;
+    &lt;input type="text" name="required" required&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Pattern (only allows uppercase letters)&lt;/h3&gt;
+    &lt;input type="text" pattern="[A-Z]*"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Placeholder&lt;/h3&gt;
+    &lt;input type="text" name="placeholder" placeholder="Enter text here"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Spellcheck&lt;/h3&gt;
+    &lt;input type="text" spellcheck="true"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Step&lt;/h3&gt;
+    &lt;input type="number" step="5"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;input type="submit" value="Send"&gt;
+&lt;/div&gt;
+</pre>
+                    </section>
+                </div>
+
+                <footer id="page-footer" role="contentinfo">
+                    Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+                </footer>
+            </div>
+
+            <!-- Syntax highlighting -->
+            <script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+                </script>
+
+                <script>
+                    var _gaq = _gaq || [];
+                    _gaq.push(['_setAccount', 'UA-56164-1']);
+                    _gaq.push(['_trackPageview']);
+
+                    (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+                    })();
+
+                    var sc_project=593937,
+                    sc_partition=4,
+                    sc_security="175a1fec";
+                </script>
+
+                <script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+
+
+            </body>
+        </html>

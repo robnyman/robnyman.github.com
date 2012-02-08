@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>SVG - Scalable Vector Graphics - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>SVG - Scalable Vector Graphics <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Uses SVG to handle vector graphics in a web page. Demos below are SVG inline, included from separate file, created via JavaScript or as SVG &amp; VML through the <a href="http://raphaeljs.com/">Raphaël JavaScript library</a>.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<!-- 
+					Inline SVG - only works sent as application/xhtml+xml or text/xml, or in later 
+					web browsers (Firefox 4, Google Chrome 7, Internet Explorer 9 etc) 
+				-->
+				<svg width="200" height="110" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="100" cy="52" r="50" stroke="#0000ff" stroke-width="1" fill="#ff0000" />
+				</svg>
+				
+				
+				<!-- Included from separate file -->
+				<embed src="circle.svg" width="200" height="110" type="image/svg+xml"></embed>
+				<iframe src="circle.svg" width="200" height="110" type="image/svg+xml"></iframe>
+				<object data="circle.svg" width="200" height="110" type="image/svg+xml"></object>
+				
+				
+				<div id="svg-demo"></div>
+				
+				<script>
+					// Via regular JavaScript
+					var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+						circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+					svg.setAttribute("width", "200");
+					svg.setAttribute("height", "110");
+					svg.setAttribute("version", "1.1");
+
+					circle.setAttribute("cx", "100");
+					circle.setAttribute("cy", "52");
+					circle.setAttribute("r", "50");
+					circle.setAttribute("fill", "#ff0000");
+					circle.setAttribute("stroke", "#00ffff");
+					svg.appendChild(circle);
+					document.getElementById("svg-demo").appendChild(svg);
+				</script>
+				
+				
+				<div id="raphael-demo"></div>
+				<script src="raphael.js"></script>
+				<script>
+					window.onload = function () {
+						// SVG & VML via Raphaël JavaScript library
+						var paper = Raphael(document.getElementById("raphael-demo"), 320, 200),
+							circle = paper.circle(150, 62, 60);
+						circle.attr("fill", "#ff0000");
+						circle.attr("stroke", "#00ffff");
+					};			
+				</script>
+
+				<h2>Code used in this page</h2>
+				<pre class="brush: html">
+&lt;!-- 
+	Inline SVG - only works sent as application/xhtml+xml or text/xml, or in later 
+	web browsers (Firefox 4, Google Chrome 7, Internet Explorer 9 etc) 
+--&gt;
+&lt;svg width="200" height="110" version="1.1" xmlns="http://www.w3.org/2000/svg"&gt;
+	&lt;circle cx="100" cy="52" r="50" stroke="#0000ff" stroke-width="1" fill="#ff0000" /&gt;
+&lt;/svg&gt;
+
+
+&lt;!-- Included from separate file --&gt;
+&lt;embed src="circle.svg" width="200" height="110" type="image/svg+xml"&gt;&lt;/embed&gt;
+&lt;iframe src="circle.svg" width="200" height="110" type="image/svg+xml"&gt;&lt;/iframe&gt;
+&lt;object data="circle.svg" width="200" height="110" type="image/svg+xml"&gt;&lt;/object&gt;
+				</pre>
+				
+				<pre class="brush: js">
+&lt;div id="svg-demo"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+	// Via regular JavaScript
+	var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+		circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	svg.setAttribute("width", "200");
+	svg.setAttribute("height", "110");
+	svg.setAttribute("version", "1.1");
+
+	circle.setAttribute("cx", "100");
+	circle.setAttribute("cy", "52");
+	circle.setAttribute("r", "50");
+	circle.setAttribute("fill", "#ff0000");
+	circle.setAttribute("stroke", "#00ffff");
+	svg.appendChild(circle);
+	document.getElementById("svg-demo").appendChild(svg);
+&lt;/script&gt;
+
+
+&lt;div id="raphael-demo"&gt;&lt;/div&gt;
+&lt;script src="raphael.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	window.onload = function () {
+		// SVG & VML via Raphaël JavaScript library
+		var paper = Raphael(document.getElementById("raphael-demo"), 320, 200),
+			circle = paper.circle(150, 62, 60);
+		circle.attr("fill", "#ff0000");
+		circle.attr("stroke", "#00ffff");
+	};			
+&lt;/script&gt;
+				</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

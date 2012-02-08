@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Geolocation - finds your current location and displays it on a map - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		#map{
+			width: 700px;
+			height: 500px;
+			margin: 50px auto;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Geolocation <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using native geolocation in web browsers to find the user's current position.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<div id="map"></div>
+
+				<script src="http://www.google.com/jsapi?key=ABQIAAAAlJFc1lrstqhgTl3ZYo38bBQcfCcww1WgMTxEFsdaTsnOXOVOUhTplLhHcmgnaY0u87hQyd-n-kiOqQ"></script>
+				<script>
+					(function () {
+						google.load("maps", "2");
+						google.setOnLoadCallback(function () {
+							// Create map
+							var map = new google.maps.Map2(document.getElementById("map")),
+								markerText = "<h2>You are here</h2><p>Nice with geolocation, ain't it?</p>",
+								markOutLocation = function (lat, long) {
+									var latLong = new google.maps.LatLng(lat, long),
+										marker = new google.maps.Marker(latLong);
+									map.setCenter(latLong, 13);
+									map.addOverlay(marker);
+									marker.openInfoWindow(markerText);
+									google.maps.Event.addListener(marker, "click", function () {
+										marker.openInfoWindow(markerText);
+									});
+								};
+								map.setUIToDefault();
+
+							// Check for geolocation support	
+							if (navigator.geolocation) {
+								// Get current position
+								navigator.geolocation.getCurrentPosition(function (position) {
+										// Success!
+										markOutLocation(position.coords.latitude, position.coords.longitude);
+									}, 
+									function () {
+										// Gelocation fallback: Defaults to Stockholm, Sweden
+										markerText = "<p>Please accept geolocation for me to be able to find you. <br>I've put you in Stockholm for now.</p>";
+										markOutLocation(59.3325215, 18.0643818);
+									}
+								);
+							}
+							else {
+								// No geolocation fallback: Defaults to Eeaster Island, Chile
+								markerText = "<p>No location support. Try Easter Island for now. :-)</p>";
+								markOutLocation(-27.121192, -109.366424);
+							}
+						});	
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+				<pre class="brush: js">
+					&lt;script src="http://www.google.com/jsapi?key=ABQIAAAAlJFc1lrstqhgTl3ZYo38bBQcfCcww1WgMTxEFsdaTsnOXOVOUhTplLhHcmgnaY0u87hQyd-n-kiOqQ"&gt;&lt;/script&gt;
+					&lt;script&gt;
+						(function () {
+							google.load("maps", "2");
+							google.setOnLoadCallback(function () {
+								// Create map
+								var map = new google.maps.Map2(document.getElementById("map")),
+									markerText = "<h2>You are here</h2><p>Nice with geolocation, ain't it?</p>",
+									markOutLocation = function (lat, long) {
+										var latLong = new google.maps.LatLng(lat, long),
+											marker = new google.maps.Marker(latLong);
+										map.setCenter(latLong, 13);
+										map.addOverlay(marker);
+										marker.openInfoWindow(markerText);
+										google.maps.Event.addListener(marker, "click", function () {
+											marker.openInfoWindow(markerText);
+										});
+									};
+									map.setUIToDefault();
+
+								// Check for geolocation support	
+								if (navigator.geolocation) {
+									// Get current position
+									navigator.geolocation.getCurrentPosition(function (position) {
+											// Success!
+											markOutLocation(position.coords.latitude, position.coords.longitude);
+										}, 
+										function () {
+											// Gelocation fallback: Defaults to Stockholm, Sweden
+											markerText = "<p>Please accept geolocation for me to be able to find you. <br>I've put you in Stockholm for now.</p>";
+											markOutLocation(59.3325215, 18.0643818);
+										}
+									);
+								}
+								else {
+									// No geolocation fallback: Defaults to Eeaster Island, Chile
+									markerText = "<p>No location support. Try Easter Island for now. :-)</p>";
+									markOutLocation(-27.121192, -109.366424);
+								}
+							});	
+						})();
+					&lt;/script&gt;
+				</pre>
+
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+</body>
+</html>

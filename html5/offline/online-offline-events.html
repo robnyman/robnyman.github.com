@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Online/Offlline events - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		.online {
+			color: green;
+		}
+		
+		.offline {
+			color: red;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Online/Offlline events <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Checking for online and offline events to detect connectivity status for the end user.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<h3>
+					You are 
+					<strong id="online-status" class="online">
+						Online
+					</strong>
+				</h3>
+				<script>
+					(function () {
+						var displayOnlineStatus = document.getElementById("online-status"),
+							isOnline = function () {
+								displayOnlineStatus.innerHTML = "Online";
+								displayOnlineStatus.className = "online";
+							},
+							isOffline = function () {
+								displayOnlineStatus.innerHTML = "Offline";
+								displayOnlineStatus.className = "offline";
+							};
+							
+						if (window.addEventListener) {
+							/*
+								Works well in Firefox and Opera with the 
+								Work Offline option in the File menu.
+                                Pulling the ethernet cable doesn't seem to trigger it.
+                                Later Google Chrome and Safari seem to trigger it well
+							*/
+							window.addEventListener("online", isOnline, false);
+							window.addEventListener("offline", isOffline, false);
+						}
+						else {
+							/*
+								Works in IE with the Work Offline option in the 
+								File menu and pulling the ethernet cable
+							*/
+							document.body.ononline = isOnline;
+							document.body.onoffline = isOffline;
+						}
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+<pre class="brush: js">
+(function () {
+	var displayOnlineStatus = document.getElementById("online-status"),
+		isOnline = function () {
+			displayOnlineStatus.innerHTML = "Online";
+			displayOnlineStatus.className = "online";
+		},
+		isOffline = function () {
+			displayOnlineStatus.innerHTML = "Offline";
+			displayOnlineStatus.className = "offline";
+		};
+		
+	if (window.addEventListener) {
+        /*
+            Works well in Firefox and Opera with the 
+            Work Offline option in the File menu.
+            Pulling the ethernet cable doesn't seem to trigger it.
+            Later Google Chrome and Safari seem to trigger it well
+        */
+		window.addEventListener("online", isOnline, false);
+		window.addEventListener("offline", isOffline, false);
+	}
+	else {
+		/*
+			Works in IE with the Work Offline option in the 
+			File menu and pulling the ethernet cable
+		*/
+		document.body.ononline = isOnline;
+		document.body.onoffline = isOffline;
+	}
+})();
+</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>File API - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+	<style>
+		#drop-area {
+			height: 50px;
+			text-align: center;
+			border: 2px dashed #ddd;
+			padding: 10px;
+			margin-bottom: 2em;
+		}
+		
+		#drop-area .drop-instructions {
+			display: block;
+			height: 30px;
+		}
+		
+		#drop-area .drop-over {
+			display: none;
+			font-size: 25px;
+			height: 30px;
+		}
+				
+		#drop-area.over {
+			background: #ffffa2;
+			border: 2px dashed #000;
+		}
+		
+		#drop-area.over .drop-instructions {
+			display: none;
+		}
+
+		#drop-area.over .drop-over {
+			display: block;
+		}
+		
+		#drop-area.over .drop-over {
+			display: block;
+			font-size: 25px;
+		}
+		
+		
+		#file-list {
+			list-style: none;
+			margin-bottom: 3em;
+		}
+	
+		#file-list li {
+			border-bottom: 1px solid #000;
+			margin-bottom: 0.5em;
+			padding-bottom: 0.5em;
+		}
+
+		#file-list li.no-items {
+			border-bottom: none;
+		}
+		
+		#file-list div {
+			margin-bottom: 0.5em;
+		}
+		
+		#file-list li img {
+			max-width: 400px;
+		}
+		
+		#file-list .progress-bar-container {
+			width: 400px;
+			height: 10px;
+			border: 1px solid #555;
+			margin-bottom: 20px;
+		}
+		
+		#file-list .progress-bar-container.uploaded {
+			height: auto;
+			border: none;
+		}
+		
+		#file-list .progress-bar {
+			width: 0;
+			height: 10px;
+			font-weight: bold;
+			background: #6787e3;
+		}
+		
+		#file-list .progress-bar-container.uploaded .progress-bar{
+			display: inline-block;
+			width: auto;
+			color: #6db508;
+			background: transparent;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>File API <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using the File API to read file information for, and uploading, multiple files.</p>
+			<p><strong>NOTE!</strong>: Files are automatically uploaded as soon as they are added, and no files are stored on the server - upload only for demo purposes, to check XMLHttpRequest info through various developer tools and to display the progress bar.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<h2>File upload</h2>
+				<p>Browse and upload multiple files in one go by holding down Ctrl (Windows, Linux) or Command (Mac) when clicking on them in the file dialog, or drag and drop files. Information about the uploaded files will be listed below. NOTE: Safari seems to fail to read out any information about the actual files.</p>
+				
+				<h3>Choose file(s)</h3>
+				<p>
+					<input id="files-upload" type="file" multiple>
+				</p>
+				<p id="drop-area">
+					<span class="drop-instructions">or drag and drop files here</span>
+					<span class="drop-over">Drop files here!</span>
+				</p>
+				
+				<ul id="file-list">
+					<li class="no-items">(no files uploaded yet)</li>
+				</ul>
+				<script>
+					(function () {
+						var filesUpload = document.getElementById("files-upload"),
+							dropArea = document.getElementById("drop-area"),
+							fileList = document.getElementById("file-list");
+							
+						function uploadFile (file) {
+							var li = document.createElement("li"),
+								div = document.createElement("div"),
+								img,
+								progressBarContainer = document.createElement("div"),
+								progressBar = document.createElement("div"),
+								reader,
+								xhr,
+								fileInfo;
+								
+							li.appendChild(div);
+							
+							progressBarContainer.className = "progress-bar-container";
+							progressBar.className = "progress-bar";
+							progressBarContainer.appendChild(progressBar);
+							li.appendChild(progressBarContainer);
+							
+							/*
+								If the file is an image and the web browser supports FileReader,
+								present a preview in the file list
+							*/
+							if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+								img = document.createElement("img");
+								li.appendChild(img);
+								reader = new FileReader();
+								reader.onload = (function (theImg) {
+									return function (evt) {
+										theImg.src = evt.target.result;
+									};
+								}(img));
+								reader.readAsDataURL(file);
+							}
+							
+							// Uploading - for Firefox, Google Chrome and Safari
+							xhr = new XMLHttpRequest();
+							
+							// Update progress bar
+							xhr.upload.addEventListener("progress", function (evt) {
+								if (evt.lengthComputable) {
+									progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
+								}
+								else {
+									// No data to calculate on
+								}
+							}, false);
+							
+							// File uploaded
+							xhr.addEventListener("load", function () {
+								progressBarContainer.className += " uploaded";
+								progressBar.innerHTML = "Uploaded!";
+							}, false);
+							
+							xhr.open("post", "upload/upload.php", true);
+							
+							// Set appropriate headers
+							xhr.setRequestHeader("Content-Type", "multipart/form-data");
+							xhr.setRequestHeader("X-File-Name", file.fileName);
+							xhr.setRequestHeader("X-File-Size", file.fileSize);
+							xhr.setRequestHeader("X-File-Type", file.type);
+
+							// Send the file (doh)
+							xhr.send(file);
+							
+							// Present file info and append it to the list of files
+							fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
+							fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
+							fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
+							div.innerHTML = fileInfo;
+							
+							fileList.appendChild(li);
+						}
+						
+						function traverseFiles (files) {
+							if (typeof files !== "undefined") {
+								for (var i=0, l=files.length; i<l; i++) {
+									uploadFile(files[i]);
+								}
+							}
+							else {
+								fileList.innerHTML = "No support for the File API in this web browser";
+							}	
+						}
+						
+						filesUpload.addEventListener("change", function () {
+							traverseFiles(this.files);
+						}, false);
+						
+						dropArea.addEventListener("dragleave", function (evt) {
+							var target = evt.target;
+							
+							if (target && target === dropArea) {
+								this.className = "";
+							}
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("dragenter", function (evt) {
+							this.className = "over";
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("dragover", function (evt) {
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);
+						
+						dropArea.addEventListener("drop", function (evt) {
+							traverseFiles(evt.dataTransfer.files);
+							this.className = "";
+							evt.preventDefault();
+							evt.stopPropagation();
+						}, false);										
+					})();
+				</script>
+				
+				<h2>Code used in this page</h2>
+<pre class="brush: js">
+(function () {
+	var filesUpload = document.getElementById("files-upload"),
+		dropArea = document.getElementById("drop-area"),
+		fileList = document.getElementById("file-list");
+		
+	function uploadFile (file) {
+		var li = document.createElement("li"),
+			div = document.createElement("div"),
+			img,
+			progressBarContainer = document.createElement("div"),
+			progressBar = document.createElement("div"),
+			reader,
+			xhr,
+			fileInfo;
+			
+		li.appendChild(div);
+		
+		progressBarContainer.className = "progress-bar-container";
+		progressBar.className = "progress-bar";
+		progressBarContainer.appendChild(progressBar);
+		li.appendChild(progressBarContainer);
+		
+		/*
+			If the file is an image and the web browser supports FileReader,
+			present a preview in the file list
+		*/
+		if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+			img = document.createElement("img");
+			li.appendChild(img);
+			reader = new FileReader();
+			reader.onload = (function (theImg) {
+				return function (evt) {
+					theImg.src = evt.target.result;
+				};
+			}(img));
+			reader.readAsDataURL(file);
+		}
+		
+		// Uploading - for Firefox, Google Chrome and Safari
+		xhr = new XMLHttpRequest();
+		
+		// Update progress bar
+		xhr.upload.addEventListener("progress", function (evt) {
+			if (evt.lengthComputable) {
+				progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
+			}
+			else {
+				// No data to calculate on
+			}
+		}, false);
+		
+		// File uploaded
+		xhr.addEventListener("load", function () {
+			progressBarContainer.className += " uploaded";
+			progressBar.innerHTML = "Uploaded!";
+		}, false);
+		
+		xhr.open("post", "upload/upload.php", true);
+		
+		// Set appropriate headers
+		xhr.setRequestHeader("Content-Type", "multipart/form-data");
+		xhr.setRequestHeader("X-File-Name", file.fileName);
+		xhr.setRequestHeader("X-File-Size", file.fileSize);
+		xhr.setRequestHeader("X-File-Type", file.type);
+
+		// Send the file (doh)
+		xhr.send(file);
+		
+		// Present file info and append it to the list of files
+		fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
+		fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
+		fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
+		div.innerHTML = fileInfo;
+		
+		fileList.appendChild(li);
+	}
+	
+	function traverseFiles (files) {
+		if (typeof files !== "undefined") {
+			for (var i=0, l=files.length; i&lt;l; i++) {
+				uploadFile(files[i]);
+			}
+		}
+		else {
+			fileList.innerHTML = "No support for the File API in this web browser";
+		}	
+	}
+	
+	filesUpload.addEventListener("change", function () {
+		traverseFiles(this.files);
+	}, false);
+	
+	dropArea.addEventListener("dragleave", function (evt) {
+		var target = evt.target;
+		
+		if (target && target === dropArea) {
+			this.className = "";
+		}
+		evt.preventDefault();
+		evt.stopPropagation();
+	}, false);
+	
+	dropArea.addEventListener("dragenter", function (evt) {
+		this.className = "over";
+		evt.preventDefault();
+		evt.stopPropagation();
+	}, false);
+	
+	dropArea.addEventListener("dragover", function (evt) {
+		evt.preventDefault();
+		evt.stopPropagation();
+	}, false);
+	
+	dropArea.addEventListener("drop", function (evt) {
+		traverseFiles(evt.dataTransfer.files);
+		this.className = "";
+		evt.preventDefault();
+		evt.stopPropagation();
+	}, false);										
+})();
+</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

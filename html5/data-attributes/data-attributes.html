@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Data attributes - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		.error {
+			color: #f00;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Data attributes <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Using data attributes on HTML elements, you can assign custom values with code that is valid HTML and then access them through JavaScript.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<h2>Using custom attributes</h2>
+				<p>
+					A text with <strong id="custom-values-elm" data-type="element" data-value="I am da law!">an element with custom data attributes</strong>.
+				</p>
+				<p>	
+					<input id="read-data-attributes" type="button" value="Read out values">
+				</p>
+				
+				<h3>Data attribute values:</h3>
+				<p id="data-attribute-values">(not checked yet)</p>
+				
+				<h2>Using custom attributes with the dataset property</h2>
+				
+				<p>	
+					<input id="read-data-attributes-dataset" type="button" value="Read out values via dataset">
+				</p>
+				
+				<h3>Data attribute values via dataset:</h3>
+				<p id="data-attribute-value-dataset">(not checked yet)</p>
+				
+				
+				<script>
+					(function () {
+						document.getElementById("read-data-attributes").onclick = function () {
+							var customValuesElm = document.getElementById("custom-values-elm");
+							document.getElementById("data-attribute-values").innerHTML = "<strong>Type:</strong> " + customValuesElm.getAttribute("data-type") + ", <strong>value:</strong> " + customValuesElm.getAttribute("data-value");
+						};
+						
+						document.getElementById("read-data-attributes-dataset").onclick = function () {
+							var customValuesElm = document.getElementById("custom-values-elm"),
+								value;
+							try {
+								value = customValuesElm.dataset.type;
+							}
+							catch (e) {
+								value = '<span class="error">Error - access didn\'t work</span>';
+							}
+							document.getElementById("data-attribute-value-dataset").innerHTML = "<strong>Type:</strong> " + value;
+						};
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+<pre class="brush: js">
+	(function () {
+		document.getElementById("read-data-attributes").onclick = function () {
+			var customValuesElm = document.getElementById("custom-values-elm");
+			
+			var value = customValuesElm.dataset.type;
+			document.getElementById("data-attribute-value-dataset").innerHTML = "<strong>Type:</strong> " +  + ", <strong>value:</strong> " + customValuesElm.getAttribute("data-value");
+		};
+		
+		document.getElementById("read-data-attributes-dataset").onclick = function () {
+			var customValuesElm = document.getElementById("custom-values-elm"),
+				value;
+			try {
+				value = customValuesElm.dataset.type;
+			}
+			catch (e) {
+				value = '<span class="error">Error - access didn\'t work</span>';
+			}
+			document.getElementById("data-attribute-value-dataset").innerHTML = "<strong>Type:</strong> " + value;
+		};
+	})();
+</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

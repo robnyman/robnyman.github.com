@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		iframe {
+			width: 500px;
+			height: 300px;
+			margin: 20px auto;
+			border: 1px solid #000;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Canvas <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Use the canvas element to draw anything that comes into mind.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<canvas id="my-canvas" width="600" height="600">I am canvas</canvas>
+				
+				<script>
+					var canvas = document.getElementById("my-canvas"),
+						context = canvas.getContext("2d");
+						
+						canvas.onclick = function () {
+							location.href = canvas.toDataURL("image/jpg");
+						};
+						
+context.fillStyle = "#f00";
+context.bezierCurveTo(100, 100, 10, 10, 250, 30);
+context.fill();
+				</script>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	
+	
+</body>
+</html>

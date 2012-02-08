@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms - robertnyman.com</title>
+        <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+        <style>
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+        </style>
+        <!--[if lte IE 8]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div id="container">
+            <header role="banner">
+                <h1>HTML5 Forms <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+                <p>Exploring the new input types in HTML5.</p>
+            </header>
+
+            <div role="main">
+                <section id="main-content">
+
+                    <form action="input-types.html" method="get" id="the-form">
+
+                        <div>
+                            <h3>type="color"</h3>
+                            <input type="color" name="color">
+                        </div>
+
+                        <div>
+                            <h3>type="date"</h3>
+                            <input type="date" name="date">
+                        </div>
+
+                        <div>
+                            <h3>type="datetime"</h3>
+                            <input type="datetime" name="datetime">
+                        </div>
+
+                        <div>
+                            <h3>type="datetime-local"</h3>
+                            <input type="datetime-local" name="datetime-local">
+                        </div>
+
+                        <div>
+                            <h3>type="email"</h3>
+                            <input type="email" name="email">
+                        </div>
+
+                        <div>
+                            <h3>type="month"</h3>
+                            <input type="month" name="month">
+                        </div>
+
+                        <div>
+                            <h3>type="number"</h3>
+                            <input type="number" name="number">
+                        </div>
+
+                        <div>
+                            <h3>type="range"</h3>
+                            <input type="range" id="range" name="range">
+                            <output for="range" id="output"></output>
+                        </div>
+
+                        <div>
+                            <h3>type="search"</h3>
+                            <input type="search" name="search" results="5" autosave="saved-searches">
+                        </div>
+
+                        <div>
+                            <h3>type="tel"</h3>
+                            <input type="tel" name="tel">
+                        </div>
+
+                        <div>
+                            <h3>type="time"</h3>
+                            <input type="time" name="time">
+                        </div>
+
+                        <div>
+                            <h3>type="url"</h3>
+                            <input type="url" name="url">
+                        </div>
+
+                        <div>
+                            <h3>type="week"</h3>
+                            <input type="week" name="week">
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Send">
+                        </div>
+
+                    </form>
+
+                    <script>
+                        (function () {
+                            var theForm = document.getElementById("the-form");
+                            if ("oninput" in theForm) {
+                                theForm.addEventListener("input", function () {
+                                    output.value = range.value;
+                                }, false);
+                            }
+                        })();
+                    </script>
+
+
+
+                    <h2>Code used in this page</h2>
+
+                    <pre class="brush: html">
+&lt;div&gt;
+    &lt;h3&gt;type="color"&lt;/h3&gt;
+    &lt;input type="color" name="color"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="date"&lt;/h3&gt;
+    &lt;input type="date" name="date"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="datetime"&lt;/h3&gt;
+    &lt;input type="datetime" name="datetime"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="datetime-local"&lt;/h3&gt;
+    &lt;input type="datetime-local" name="datetime-local"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="email"&lt;/h3&gt;
+    &lt;input type="email" name="email"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="month"&lt;/h3&gt;
+    &lt;input type="month" name="month"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="number"&lt;/h3&gt;
+    &lt;input type="number" name="number"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="range"&lt;/h3&gt;
+    &lt;input type="range" id="range" name="range"&gt;
+    &lt;output for="range" id="output"&gt;&lt;/output&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="search"&lt;/h3&gt;
+    &lt;input type="search" name="search" results="5" autosave="saved-searches"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="tel"&lt;/h3&gt;
+    &lt;input type="tel" name="tel"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="time"&lt;/h3&gt;
+    &lt;input type="time" name="time"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="url"&lt;/h3&gt;
+    &lt;input type="url" name="url"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;type="week"&lt;/h3&gt;
+    &lt;input type="week" name="week"&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;input type="submit" value="Send"&gt;
+&lt;/div&gt;
+</pre>
+                    </section>
+                </div>
+
+                <footer id="page-footer" role="contentinfo">
+                    Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+                </footer>
+            </div>
+
+            <!-- Syntax highlighting -->
+            <script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+                </script>
+
+                <script>
+                    var _gaq = _gaq || [];
+                    _gaq.push(['_setAccount', 'UA-56164-1']);
+                    _gaq.push(['_trackPageview']);
+
+                    (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+                    })();
+
+                    var sc_project=593937,
+                    sc_partition=4,
+                    sc_security="175a1fec";
+                </script>
+
+                <script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+
+
+            </body>
+        </html>

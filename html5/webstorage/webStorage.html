@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WebStorage - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>WebStorage <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<h2>localStorage &amp; sessionStorage</h2>
+			<p>Using localStorage and sessionStorage to to save values for the current user. Please note that sessionStorage is only for the current window and session, whereas localStorage is saved between sessions.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<h2>localStorage</h2>
+				<p>The value of your localStorage value for "name" is: <span id="local-storage-results">(no value)</span></p>
+				<p>
+					<input id="set-local-storage" type="button" value="Set localStorage">
+					<input id="clear-local-storage" type="button" value="Clear localStorage">
+				</p>
+				<script>
+					(function () {
+						function displayLocalStorageResults () {
+							var localStorageVal = localStorage["name"];
+							document.getElementById("local-storage-results").innerHTML = (localStorageVal)? localStorageVal : "(no value)";
+						}
+						displayLocalStorageResults();
+						
+						document.getElementById("set-local-storage").onclick = function () {
+							localStorage["name"] = "Robert";
+							displayLocalStorageResults();
+						};
+						
+						document.getElementById("clear-local-storage").onclick = function () {
+							localStorage.clear();
+							displayLocalStorageResults();
+						};
+					})();
+				</script>
+				
+				<h2>sessionStorage</h2>
+				<p>The value of your sessionStorage value for "name" is: <span id="session-storage-results">(no value yet)</span></p>
+				<p>
+					<input id="set-session-storage" type="button" value="Set sessionStorage">
+					<input id="clear-session-storage" type="button" value="Clear sessionStorage">
+				</p>
+				<script>
+					(function () {
+						function displaySessionStorageResults () {
+							var sessionStorageVal = sessionStorage["lastName"];
+							document.getElementById("session-storage-results").innerHTML = (sessionStorageVal)? sessionStorageVal : "(no value)";
+						}
+						displaySessionStorageResults();
+						
+						document.getElementById("set-session-storage").onclick = function () {
+							sessionStorage["lastName"] = "Nyman";
+							displaySessionStorageResults(sessionStorage["name"]);
+						};
+						
+						document.getElementById("clear-session-storage").onclick = function () {
+							sessionStorage.clear();
+							displaySessionStorageResults("(no value)");
+						};
+					})();
+				</script>
+
+				<h2>Code used in this page</h2>
+<pre class="brush: js">
+	(function () {
+		function displayLocalStorageResults () {
+			var localStorageVal = localStorage["name"];
+			document.getElementById("local-storage-results").innerHTML = (localStorageVal)? localStorageVal : "(no value)";
+		}
+		displayLocalStorageResults();
+		
+		document.getElementById("set-local-storage").onclick = function () {
+			localStorage["name"] = "Robert";
+			displayLocalStorageResults();
+		};
+		
+		document.getElementById("clear-local-storage").onclick = function () {
+			localStorage.clear();
+			displayLocalStorageResults();
+		};
+	})();
+	
+	(function () {
+		function displaySessionStorageResults () {
+			var sessionStorageVal = sessionStorage["lastName"];
+			document.getElementById("session-storage-results").innerHTML = (sessionStorageVal)? sessionStorageVal : "(no value)";
+		}
+		displaySessionStorageResults();
+		
+		document.getElementById("set-session-storage").onclick = function () {
+			sessionStorage["lastName"] = "Nyman";
+			displaySessionStorageResults(sessionStorage["name"]);
+		};
+		
+		document.getElementById("clear-session-storage").onclick = function () {
+			sessionStorage.clear();
+			displaySessionStorageResults("(no value)");
+		};
+	})();
+</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

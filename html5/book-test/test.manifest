@@ -1,0 +1,9 @@
+CACHE MANIFEST
+
+CACHE:
+test.html
+
+FALLBACK:
+online.css offline.css
+
+# VERSION 2

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas - robertnyman.com</title>
+	<link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+	<style>
+		iframe {
+			width: 500px;
+			height: 300px;
+			margin: 20px auto;
+			border: 1px solid #000;
+		}
+	</style>
+	<!--[if lte IE 8]>
+		<script src="../js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<div id="container">
+		<header role="banner">
+			<h1>Canvas <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+			<p>Use the canvas element to draw anything that comes into mind.</p>
+		</header>
+		
+		<div role="main">
+			<section id="main-content">
+				
+				<canvas id="my-canvas" width="200" height="200">I am canvas</canvas>
+				
+				<canvas id="my-canvas-2" width="200" height="200">I am canvas too </canvas>
+				
+				<canvas id="my-canvas-3" width="200" height="200">Canvas thrice</canvas>
+				
+				<canvas id="my-canvas-4" width="200" height="200">Four to rule the canvas</canvas>
+				
+				<canvas id="my-canvas-5" width="600" height="200">Five is my canvas</canvas>
+				
+				<script>
+					var canvas = document.getElementById("my-canvas"),
+						context = canvas.getContext("2d");
+					
+					context.fillStyle = "#f00";
+					context.fillRect(0, 0, 100, 100);
+					context.strokeStyle = "#00f";
+					context.strokeRect(25, 25, 50, 50);
+					
+					
+					var canvas2 = document.getElementById("my-canvas-2"),
+						context2 = canvas2.getContext("2d");
+						
+					context2.fillStyle = "#0f0";	
+					
+					context2.beginPath();  
+					context2.moveTo(100, 0);  
+					context2.lineTo(0, 100);  
+					context2.lineTo(200, 100);  
+					context2.fill();
+					
+					
+					var canvas3 = document.getElementById("my-canvas-3"),
+						context3 = canvas3.getContext("2d");
+											
+					context3.beginPath();
+					context3.moveTo(110,75);
+					context3.arc(75,75,35,0,Math.PI*1.2,false);
+					context3.stroke();
+					
+					context3.moveTo(47,54);
+					context3.lineTo(95,15);
+					
+					context3.moveTo(109,75);
+					context3.lineTo(195,45);
+					
+					context3.lineTo(95,15);
+					context3.stroke();
+					
+					
+					var canvas4 = document.getElementById("my-canvas-4"),
+						context4 = canvas4.getContext("2d");
+					
+					context4.fillStyle = "#f00";
+					context4.bezierCurveTo(100, 100, 10, 10, 250, 10);
+					context4.fill();
+					
+					var canvas5 = document.getElementById("my-canvas-5"),
+						context5 = canvas5.getContext("2d"),
+						img = document.createElement("img");
+						
+					img.addEventListener("load", function () {
+						context5.drawImage(img, 0, 0, 600, 200);
+						// Get canvas content as a base64 image
+						var base64Img = canvas5.toDataURL("image/png");
+					}, false);
+					
+					img.setAttribute("src", "view.jpg");
+				</script>
+
+				<h2>Code used in this page</h2>
+				<pre class="brush: js">
+var canvas = document.getElementById("my-canvas"),
+	context = canvas.getContext("2d");
+
+context.fillStyle = "#f00";
+context.fillRect(0, 0, 100, 100);
+context.strokeStyle = "#00f";
+context.strokeRect(25, 25, 50, 50);
+
+
+var canvas2 = document.getElementById("my-canvas-2"),
+	context2 = canvas2.getContext("2d");
+	
+context2.fillStyle = "#0f0";	
+
+context2.beginPath();  
+context2.moveTo(100, 0);  
+context2.lineTo(0, 100);  
+context2.lineTo(200, 100);  
+context2.fill();
+
+
+var canvas3 = document.getElementById("my-canvas-3"),
+	context3 = canvas3.getContext("2d");
+						
+context3.beginPath();
+context3.moveTo(110,75);
+context3.arc(75,75,35,0,Math.PI*1.2,false);
+context3.stroke();
+
+context3.moveTo(47,54);
+context3.lineTo(95,15);
+
+context3.moveTo(109,75);
+context3.lineTo(195,45);
+
+context3.lineTo(95,15);
+context3.stroke();
+
+
+var canvas4 = document.getElementById("my-canvas-4"),
+	context4 = canvas4.getContext("2d");
+
+context4.fillStyle = "#f00";
+context4.bezierCurveTo(100, 100, 10, 10, 250, 10);
+context4.fill();
+
+var canvas5 = document.getElementById("my-canvas-5"),
+	context5 = canvas5.getContext("2d"),
+	img = document.createElement("img");
+	
+img.addEventListener("load", function () {
+	context5.drawImage(img, 0, 0, 600, 200);
+	// Get canvas content as a base64 image
+	var base64Img = canvas5.toDataURL("image/png");
+}, false);
+
+img.setAttribute("src", "view.jpg");
+				</pre>
+			</section>
+		</div>
+		
+		<footer id="page-footer" role="contentinfo">
+			Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+		</footer>
+	</div>
+	
+	<!-- Syntax highlighting -->
+	<script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all();
+	</script>
+	
+	<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-56164-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+			})();
+
+			var sc_project=593937,
+				sc_partition=4,
+				sc_security="175a1fec";
+		</script>
+
+		<script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+	
+	
+	
+</body>
+</html>

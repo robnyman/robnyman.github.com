@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms - robertnyman.com</title>
+        <link rel="stylesheet" href="../css/base.css" type="text/css" media="screen">
+        <style>
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+        </style>
+        <!--[if lte IE 8]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div id="container">
+            <header role="banner">
+                <h1>HTML5 Forms <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
+                <p>New form elements introduced in HTML5.</p>
+            </header>
+
+            <div role="main">
+                <section id="main-content">
+
+                    <form id="the-form" action="elements.html">
+
+                        <div>
+                            <h3>Datalist</h3>
+                            <input type="text" name="characters" list="data-list">
+                            <datalist id="data-list">
+                                <option value="Hugo Reyes">
+                                <option value="Jack Shephard">
+                                <option value="James 'Sawyer' Ford">
+                                <option value="John Locke">
+                                <option value="Sayid Jarrah">
+                            </datalist>
+                        </div>
+
+                        <div>
+                            <h3>Keygen</h3>
+                            <keygen name="key"></keygen>
+                        </div>
+
+                        <div>
+                            <h3>Meter</h3>
+                            <meter min="0" max="10" value="7"></meter>
+                        </div>
+
+                        <div>
+                            <h3>Output</h3>
+                            <p>If input type="range" and the oninput event on forms are supported in your web browser, slide the range below to see the value in the output element.</p>
+                            <input type="range" id="range" name="range">
+                            <output for="range" id="output"></output>
+                        </div>
+
+                        <script>
+                            (function () {
+                                var theForm = document.getElementById("the-form");
+                                if ("oninput" in theForm) {
+                                    theForm.addEventListener("input", function () {
+                                        output.value = range.value;
+                                    }, false);
+                                }
+                            })();
+                        </script>
+
+                        <div>
+                            <h3>Progress</h3>
+                            <progress max="100" value="70">70%</progress>
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Send">
+                        </div>
+
+                    </form>    
+
+
+
+                    <h2>Code used in this page</h2>
+
+                    <pre class="brush: html">
+&lt;div&gt;
+    &lt;h3&gt;Datalist&lt;/h3&gt;
+    &lt;input type="text" name="characters" list="data-list"&gt;
+    &lt;datalist id="data-list"&gt;
+        &lt;option value="Hugo Reyes"&gt;
+        &lt;option value="Jack Shephard"&gt;
+        &lt;option value="James 'Sawyer' Ford"&gt;
+        &lt;option value="John Locke"&gt;
+        &lt;option value="Sayid Jarrah"&gt;
+    &lt;/datalist&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Keygen&lt;/h3&gt;
+    &lt;keygen name="key"&gt;&lt;/keygen&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Meter&lt;/h3&gt;
+    &lt;meter min="0" max="10" value="7"&gt;&lt;/meter&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Output&lt;/h3&gt;
+    &lt;p&gt;If input type="range" and the oninput event on forms are supported in your web browser, slide the range below to see the value in the output element.&lt;/p&gt;
+    &lt;input type="range" id="range" name="range"&gt;
+    &lt;output for="range" id="output"&gt;&lt;/output&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    (function () {
+        var theForm = document.getElementById("the-form");
+        if ("oninput" in theForm) {
+            theForm.addEventListener("input", function () {
+                output.value = range.value;
+            }, false);
+        }
+    })();
+&lt;/script&gt;
+
+&lt;div&gt;
+    &lt;h3&gt;Progress&lt;/h3&gt;
+    &lt;progress max="100" value="70"&gt;70%&lt;/progress&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+    &lt;input type="submit" value="Send"&gt;
+&lt;/div&gt;
+</pre>
+                    </section>
+                </div>
+
+                <footer id="page-footer" role="contentinfo">
+                    Created by <a href="http://robertnyman.com/">Robert Nyman</a>
+                </footer>
+            </div>
+
+            <!-- Syntax highlighting -->
+            <script type="text/javascript" src="../syntax-highlighter/scripts/shHTMLJavaScript.js"></script>
+            <script type="text/javascript">
+                SyntaxHighlighter.all();
+                </script>
+
+                <script>
+                    var _gaq = _gaq || [];
+                    _gaq.push(['_setAccount', 'UA-56164-1']);
+                    _gaq.push(['_trackPageview']);
+
+                    (function() {
+                        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+                    })();
+
+                    var sc_project=593937,
+                    sc_partition=4,
+                    sc_security="175a1fec";
+                </script>
+
+                <script src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a class="statcounter" href="http://www.statcounter.com/"><img class="statcounter" src="http://c5.statcounter.com/counter.php?sc_project=593937&amp;java=0&amp;security=175a1fec" alt="free geoip"></a></div></noscript>
+
+
+            </body>
+        </html>

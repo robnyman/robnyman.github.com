@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage - send messages between iframes and windows - robertnyman.com</title>
+	<style>
+		body {
+			background: #fff;
+		}
+	</style>
+	
+	<script>
+		function displayMessage (evt) {
+			
+				message = "Server got " + evt.data + " from " + evt.origin;
+			document.getElementById("received-message").innerHTML = message;
+		}
+		
+		if (window.addEventListener) {
+			// For standards-compliant web browsers
+			window.addEventListener("message", displayMessage, false);
+		}
+		else {
+			window.attachEvent("onmessage", displayMessage);
+		}
+	</script>
+</head>
+
+<body>
+	
+	<p id="received-message">I've heard nothing yet</p>
+	
+</body>
+</html>
