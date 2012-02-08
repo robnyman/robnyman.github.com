@@ -18,20 +18,20 @@
 		</header>
 		
 		<div id="demo-main" role="main">
-			<section id="demo-main-content">
+			<article id="demo-main-content">
 				<header>
 					<hgroup>
 						<h2>A title</h2>
 						<h3>Subtitle to the above title</h3>
 					</hgroup>
 				</header>	
-				<article>
+				<section>
 					<p>Some content, created <time datetime="2009-10-14">October 14th 2009</time></p>
-				</article>
-				<article>
-					<p>Some more content - i guess you get the drift by now</p>
-				</article>
-			</section>
+				</section>
+				<section>
+					<p>Some more content - I guess you get the drift by now</p>
+				</section>
+			</article>
 			
 			<aside id="demo-aside-content" role="complementary">
 				This is just a demo page to see HTML5 markup and WAI-ARIA landmark roles in action in a simple context
@@ -39,15 +39,14 @@
 		</div>	
 			
 		<section>
-			<article>
 				<header>
 					<h2>The HTML code for this page</h2>
-				</header>
-				<pre class="brush: html">&lt;!DOCTYPE html&gt;
+                </header>
+                <pre class="brush: html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 	&lt;meta charset="utf-8"&gt;
-	&lt;title&gt;HTML5 example with new elements and WAI-ARIA landmark roles&lt;/title&gt;
+	&lt;title&gt;HTML5 example with new elements and WAI-ARIA landmark roles - robertnyman.com&lt;/title&gt;
 	&lt;link rel="stylesheet" href="css/base.css" type="text/css" media="screen"&gt;
 	&lt;!--[if lte IE 8]&gt;
 		&lt;script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
@@ -55,59 +54,48 @@
 &lt;/head&gt;
 
 &lt;body id="index-page"&gt;
-
+	
 	&lt;div id="container"&gt;
 		&lt;header role="banner"&gt;
-			&lt;h1&gt;HTML5 example with new elements and WAI-ARIA landmark roles&lt;/h1&gt;
-			&lt;p&gt;This page has valid simple HTML5 markup complemented with WAI-ARIA landmark roles for accessibility&lt;/p&gt;
+			&lt;h1&gt;HTML5 example &lt;a href="http://robertnyman.com/html5"&gt;- To: Information and samples for HTML5 and related APIs&lt;/a&gt;&lt;/h1&gt;
+			&lt;p&gt;This page has valid simple HTML5 markup with new elements complemented with WAI-ARIA landmark roles for accessibility&lt;/p&gt;
 		&lt;/header&gt;
-
-		&lt;nav id="demo-top-nav"&gt;
-			&lt;ul&gt;
-				&lt;li&gt;&lt;a href="http://robertnyman.com/html5"&gt;HTML5 demos and samples' start page&lt;/a&gt;&lt;/li&gt;
-				&lt;li&gt;&lt;a href="http://robertnyman.com/"&gt;Robert's talk&lt;/a&gt;&lt;/li&gt;
-				&lt;li&gt;&lt;a href="http://robertnyman.com/javascript/"&gt;JavaScript compatibility tests&lt;/a&gt;&lt;/li&gt;
-			&lt;/ul&gt;
-		&lt;/nav&gt;
-
+		
 		&lt;div id="demo-main" role="main"&gt;
-			&lt;section id="demo-main-content"&gt;
+			&lt;article id="demo-main-content"&gt;
 				&lt;header&gt;
 					&lt;hgroup&gt;
 						&lt;h2&gt;A title&lt;/h2&gt;
 						&lt;h3&gt;Subtitle to the above title&lt;/h3&gt;
 					&lt;/hgroup&gt;
-				&lt;/header&gt;
-					
-				&lt;article&gt;
+				&lt;/header&gt;	
+				&lt;section&gt;
 					&lt;p&gt;Some content, created &lt;time datetime="2009-10-14"&gt;October 14th 2009&lt;/time&gt;&lt;/p&gt;
-				&lt;/article&gt;
-				&lt;article&gt;
-					&lt;p&gt;Some more content - i guess you get the drift by now&lt;/p&gt;
-				&lt;/article&gt;
-
-				&lt;article&gt;
-					&lt;header&gt;
-						&lt;h2&gt;The HTML code for this page&lt;/h2&gt;
-					&lt;/header&gt;
-
-				&lt;/article&gt;
-			&lt;/section&gt;
-
+				&lt;/section&gt;
+				&lt;section&gt;
+					&lt;p&gt;Some more content - I guess you get the drift by now&lt;/p&gt;
+				&lt;/section&gt;
+			&lt;/article&gt;
+			
 			&lt;aside id="demo-aside-content" role="complementary"&gt;
 				This is just a demo page to see HTML5 markup and WAI-ARIA landmark roles in action in a simple context
 			&lt;/aside&gt;
-		&lt;/div&gt;
-
+		&lt;/div&gt;	
+			
+		&lt;section&gt;
+				&lt;header&gt;
+					&lt;h2&gt;The HTML code for this page&lt;/h2&gt;
+				&lt;/header&gt;
+		&lt;/section&gt;
+		
 		&lt;footer id="page-footer" role="contentinfo"&gt;
 			Created by &lt;a href="http://robertnyman.com/"&gt;Robert Nyman&lt;/a&gt;
 		&lt;/footer&gt;
 	&lt;/div&gt;
-
-
+	
+	
 &lt;/body&gt;
 &lt;/html&gt;</pre>
-			</article>
 		</section>
 		
 		<footer id="page-footer" role="contentinfo">
