@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">  
+    <title>Video demo</title>
+    <style>
+        body {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px
+        }
+
+        button {
+            background: #ccc;
+            border: 1px solid #000;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        button:hover {
+            color: #fff;
+            background: #555;
+        }
+
+        .video-container {
+            height: 363px;
+            overflow: hidden;
+        }
+
+        video {
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <video id="main-video" controls autoplay>
+            <source src="nasa.mp4"></source>
+            <source src="nasa.webm"></source>
+        </video>
+    </div>  
+
+    <p>
+        <button id="zoom-in" type="button">Zoom in</button>
+        <button id="zoom-out" type="button">Zoom out</button>
+        <button id="rotate-left" type="button">Rotate left</button>
+        <button id="rotate-right" type="button">Rotate right</button>
+    </p>
+
+	<p>
+        <button id="add-blur" type="button">Blur</button>
+        <button id="invert" type="button">Invert</button>
+        <button id="black-and-white" type="button">Black &amp; White</button>
+        <button id="noir" type="button">Noir</button>
+	</p>
+
+    <p>Video taken from <a href="http://www.open-video.org/details.php?videoid=352">NASA 25th Anniversary Show, Segment 07</a></p>
+    
+    <svg id="image" version="1.1" xmlns="http://www.w3.org/2000/svg"> 
+        <defs>
+            <filter id="video-blur"> 
+                <feGaussianBlur stdDeviation="5" /> 
+            </filter>
+            
+            <filter id="inverse"> 
+               <feComponentTransfer> 
+                   <feFuncR type="table" tableValues="1 0"/> 
+                   <feFuncG type="table" tableValues="1 0"/> 
+                   <feFuncB type="table" tableValues="1 0"/> 
+               </feComponentTransfer> 
+            </filter>
+            
+            <filter id="blackandwhite">
+              <feColorMatrix values="0.3333 0.3333 0.3333 0 0
+                                     0.3333 0.3333 0.3333 0 0
+                                    0.3333 0.3333 0.3333 0 0
+                                    0      0      0      1 0"/>
+            </filter>
+            
+            <filter id="noir-filter">
+                <feGaussianBlur stdDeviation="1.5" />
+                <feComponentTransfer>
+                    <feFuncR type="discrete" tableValues="0 .5 1 1"/>
+                    <feFuncG type="discrete" tableValues="0 .5 1"/>
+                    <feFuncB type="discrete" tableValues="0"/>
+                </feComponentTransfer>
+            </filter>
+        </defs>
+    </svg>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        	var mainVideo = document.getElementById("main-video"),
+	            zoomIn = document.getElementById("zoom-in"),
+	            zoomOut = document.getElementById("zoom-out"),
+	            rotateLeft = document.getElementById("rotate-left"),
+	            rotateRight = document.getElementById("rotate-right"),
+	            addBlur = document.getElementById("add-blur"),
+	            invert = document.getElementById("invert"),
+	            blackAndWhite = document.getElementById("black-and-white"),
+	            noir = document.getElementById("noir"),
+	            zoom = 1,
+	            rotation = 0,
+	            browserTransforms = ["transform", "MozTransform", "WebkitTransform", "OTransform", "msTransform"],
+	            browserTransformStyle;
+            
+	        for (var i=0, l=browserTransforms.length, currentStyle; i<l; i++) {
+	            currentStyle = browserTransforms[i];
+	            if (currentStyle in mainVideo.style) {
+	                browserTransformStyle = currentStyle;
+	                break;
+	            }
+	        };    
+
+	        zoomIn.addEventListener("click", function () {
+	            mainVideo.style[browserTransformStyle] = "scale(" + parseFloat(zoom += 0.5) + ") rotate(" + rotation + "deg)";
+	        }, false);
+
+	        zoomOut.addEventListener("click", function () {
+	            mainVideo.style[browserTransformStyle] = "scale(" + parseFloat(zoom -= 0.5) + ") rotate(" + rotation + "deg)";  
+	        }, false);
+
+
+	        rotateLeft.addEventListener("click", function () {
+	            mainVideo.style[browserTransformStyle] = "scale(" + zoom + ") rotate(" + parseFloat(rotation -= 30) + "deg)";
+	        }, false);
+
+
+	        rotateRight.addEventListener("click", function () {
+	            mainVideo.style[browserTransformStyle] = "scale(" + zoom + ") rotate(" + parseFloat(rotation += 30) + "deg)";
+	        }, false);
+
+            addBlur.addEventListener("click", function () {
+                mainVideo.style.filter = "url(#video-blur)";
+            }, false);
+
+            invert.addEventListener("click", function () {
+                mainVideo.style.filter = "url(#inverse)";
+            }, false);
+            
+            blackAndWhite.addEventListener("click", function () {
+                mainVideo.style.filter = "url(#blackandwhite)";
+            }, false);
+            
+            noir.addEventListener("click", function () {
+                mainVideo.style.filter = "url(#noir-filter)";
+            }, false);
+
+        }, false); 
+    </script>
+
+</body>
+</html>
