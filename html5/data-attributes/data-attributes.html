@@ -74,7 +74,7 @@
 			var customValuesElm = document.getElementById("custom-values-elm");
 			
 			var value = customValuesElm.dataset.type;
-			document.getElementById("data-attribute-value-dataset").innerHTML = "<strong>Type:</strong> " +  + ", <strong>value:</strong> " + customValuesElm.getAttribute("data-value");
+			document.getElementById("data-attribute-value-dataset").innerHTML = "<strong>Type:</strong> " + customValuesElm.getAttribute("data-type") + ", <strong>value:</strong> " + customValuesElm.getAttribute("data-value");
 		};
 		
 		document.getElementById("read-data-attributes-dataset").onclick = function () {
