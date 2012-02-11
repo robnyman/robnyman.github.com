@@ -3,12 +3,26 @@ body {
     background: #ccc;
 }
 
+h2 {
+    margin-top: 40px;
+}
+
 .container {
     width: 600px;
     background: #fff;
     border-radius: 10px;
     margin: 0 auto;
     padding: 30px;
+}
+
+img {
+    padding: 10px;
+    box-shadow: 0 0 10px 2px #000;
+    margin-bottom: 5px;
+}
+
+figcaption {
+    font-style: italic;
 }
 
 .additional-content {
