@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms styling and input - robertnyman.com</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+        <style>
+            h2 {
+                margin-top: 100px;
+            }
+            h3 {
+                margin-bottom: 20px;
+            }
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                padding: 3px;
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+
+            input:-moz-placeholder {
+                color: #f00;
+                background: yellow;
+            }
+
+            input::-webkit-input-placeholder {
+                color: #f00;
+                background: yellow;
+            }
+
+            input:required {
+                border: 1px solid #00f;
+            }
+
+            /*input[required]:before {
+                content: "*";
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border: 2px solid red;
+            }*/
+
+            input:valid {
+                /*border: 1px solid #0f0;*/
+            }
+
+            /* Other web browsers */
+            input:invalid {
+                border: 1px solid #f00;
+            }
+
+            input:out-of-range {
+                border: 1px solid #f00;
+            }
+
+            input:focus:invalid {
+                border: 1px solid #f00;
+            }
+
+
+            /* Firefox styles */    
+            input:-moz-ui-valid {
+                border: 1px solid #0f0;
+            }
+
+            input:-moz-ui-invalid {
+                border: 1px solid #f00;
+            }
+
+            div.form-submit {
+                float: none;
+            }
+
+            input::-webkit-validation-bubble-message {
+                color: #f00;
+                background: #000;
+                border: 10px solid #f00;
+                -webkit-box-shadow: 0 0 0 0;
+            }
+
+            input::-webkit-validation-bubble-arrow {
+                background: #ff3456;
+                border-color: orange;
+                -webkit-box-shadow: 0 0 0 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="main">
+                <article class="main-content" role="main">
+                    <h1>HTML5 Forms styling</h1>
+
+                    <form id="the-form" action="validation.html">
+
+                        <div>
+                            <h3>placeholder - Name:</h3>
+                            <div><input type="text" placeholder="Gene Simmons"></div>
+                        </div>
+
+                        <div>
+                            <h3>required</h3>
+                            <div><input type="text" name="user-input" required></div>
+                        </div>
+
+                        <div>
+                            <h3>required e-mail</h3>
+                            <div><input type="email" required></div>
+                        </div>
+
+                        <div>
+                            <h3>number (to see :out-of-range styling, between 1 and 5 is valid)</h3>
+                            <div>
+                                <input type="number" min="1" max="5">
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Custom validation message presentation</h3>
+                            <div><input type="text" name="user-input" class="custom-validation-ui" autofocus required></div>
+                        </div>
+
+                        <div>
+                            <h3>mozactionhint, for keyboard labeling on mobile decives</h3>
+                            <div><input type="text" mozactionhint="Next"></div>
+                        </div>
+
+                        <div>
+                            <h3>range</h3>
+                            <div>
+                                <input type="range" id="da-range">
+                                <output id="da-range-output"></output>
+                                <script>
+                                    (function () {
+                                        var range = document.getElementById("da-range"),
+                                        output = document.getElementById("da-range-output");
+                                        range.addEventListener("input", function () {
+                                            output.value = this.value;
+                                        }, false);
+                                    })();
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Send">
+                        </div>
+
+                    </form>    
+                </article>
+            </div>
+
+            <footer class="page-footer" role="contentinfo">
+                Created by <a href="http://robertnyman.com/">Robert Nyman</a><br>
+                <a href="https://github.com/robnyman/robnyman.github.com">All demo code at GitHub</a>.
+            </footer>
+
+        </div>
+
+    </body>
+</html>
+

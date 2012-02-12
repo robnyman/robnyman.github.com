@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms Validation - robertnyman.com</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+        <style>
+            h2 {
+                margin-top: 100px;
+            }
+            h3 {
+                margin-bottom: 20px;
+            }
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+
+            div.form-submit {
+                float: none;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="main">
+                <article class="main-content" role="main">
+                    <h1>HTML5 Forms validation</h1>
+
+
+                    <form id="the-form" action="validation.html">
+
+                        <div>
+                            <h3>required</h3>
+                            <div><input type="text" name="user-input" value="Test" autofocus required></div>
+                            <!--<div style="visibility: hidden"><input type="text" name="user-input" required></div>-->
+                        </div>
+
+                        <div>
+                            <h3>required e-mail</h3>
+                            <div><input type="email" required></div>
+                        </div>
+
+                        <div>
+                            <h3>required, with title attribute</h3>
+                            <div><input type="text" id="title-test" name="title-test" title="So you tried to skip me?" value="APA" required></div>
+                        </div>
+
+                        <div>
+                            <h3>pattern, required (correct input is 2 digits, hyphen and then five digits)</h3>
+                            <div><input type="text" pattern="\d{2}\-\d{5}" value="22-22222" required></div>
+                        </div>
+
+                        <div>
+                            <h3>pattern, with x-moz-errormessage (correct input is 2 digits, hyphen and then five digits)</h3>
+                            <div><input type="text" pattern="\d{2}\-\d{5}" x-moz-errormessage="PLEASE, just do it right!"></div>
+                        </div>
+
+                        <div>
+                            <h3>required, with pattern, setCustomValidity and oninvalid event (correct input is three letter)</h3>
+                            <div><input type="text" id="custom-oninvalid-test" name="custom-oninvalid-test" value="www" pattern="\w{3}" required></div>
+
+                            <script>
+                                (function () {
+                                    var oninvalidTest = document.getElementById("custom-oninvalid-test");
+                                    oninvalidTest.addEventListener("input", function () {
+                                        this.setCustomValidity("");
+                                    }, false);
+
+                                    oninvalidTest.addEventListener("invalid", function () {
+                                        this.setCustomValidity("No, that's wrong!");
+                                    }, false);
+                                })();
+                            </script>
+                        </div>
+
+                        <div class="form-submit">
+                            <input type="submit" value="Send">
+                        </div>
+
+                    </form>    
+                </article>
+            </div>
+
+            <footer class="page-footer" role="contentinfo">
+                Created by <a href="http://robertnyman.com/">Robert Nyman</a><br>
+                <a href="https://github.com/robnyman/robnyman.github.com">All demo code at GitHub</a>.
+            </footer>
+
+        </div>
+
+    </body>
+</html>
+
+

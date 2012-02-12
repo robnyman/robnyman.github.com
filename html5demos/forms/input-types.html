@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Forms - robertnyman.com</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+        <style>
+            form {
+                overflow: hidden;
+            }
+
+            form div {
+                float: left;
+                width: 45%;
+                min-height: 50px;
+                margin-bottom: 20px;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 320px) {
+                form div {
+                    float: none;
+                    width: 100%;
+                }
+            }
+
+            input {
+                font-size: 12px;
+            }
+
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=month],
+            input[type=number],
+            input[type=week] {
+                /* Larger font size to cover up for Opera bug */
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <div class="main">
+                <article class="main-content" role="main">
+                    <h1>HTML5 Forms input types</h1>
+
+                    <form action="input-types.html" method="get" id="the-form">
+
+                        <div>
+                            <h3>type="color"</h3>
+                            <input type="color" name="color">
+                        </div>
+
+                        <div>
+                            <h3>type="date"</h3>
+                            <input type="date" name="date">
+                        </div>
+
+                        <div>
+                            <h3>type="datetime"</h3>
+                            <input type="datetime" name="datetime">
+                        </div>
+
+                        <div>
+                            <h3>type="datetime-local"</h3>
+                            <input type="datetime-local" name="datetime-local">
+                        </div>
+
+                        <div>
+                            <h3>type="email"</h3>
+                            <input type="email" name="email">
+                        </div>
+
+                        <div>
+                            <h3>type="month"</h3>
+                            <input type="month" name="month">
+                        </div>
+
+                        <div>
+                            <h3>type="number"</h3>
+                            <input type="number" name="number">
+                        </div>
+
+                        <div>
+                            <h3>type="range"</h3>
+                            <input type="range" id="range" name="range">
+                            <output for="range" id="output"></output>
+                        </div>
+
+                        <div>
+                            <h3>type="search"</h3>
+                            <input type="search" name="search" results="5" autosave="saved-searches">
+                        </div>
+
+                        <div>
+                            <h3>type="tel"</h3>
+                            <input type="tel" name="tel">
+                        </div>
+
+                        <div>
+                            <h3>type="time"</h3>
+                            <input type="time" name="time">
+                        </div>
+
+                        <div>
+                            <h3>type="url"</h3>
+                            <input type="url" name="url">
+                        </div>
+
+                        <div>
+                            <h3>type="week"</h3>
+                            <input type="week" name="week">
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Send">
+                        </div>
+
+                    </form>
+
+                    <script>
+                        (function () {
+                            var theForm = document.getElementById("the-form");
+                            if ("oninput" in theForm) {
+                                theForm.addEventListener("input", function () {
+                                    output.value = range.value;
+                                }, false);
+                            }
+                        })();
+                    </script>
+                </article>
+            </div>
+
+            <footer class="page-footer" role="contentinfo">
+                Created by <a href="http://robertnyman.com/">Robert Nyman</a><br>
+                <a href="https://github.com/robnyman/robnyman.github.com">All demo code at GitHub</a>.
+            </footer>
+
+        </div>
+
+    </body>
+</html>
+

@@ -1,0 +1,37 @@
+body {
+    font: 12px "Helvetica Neue", "Helvetica", sans-serif;
+    background: #ccc;
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+.container {
+    width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+img {
+    padding: 10px;
+    box-shadow: 0 0 10px 2px #000;
+    margin-bottom: 5px;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.additional-content {
+    float: right;
+}
+
+.page-footer {
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
