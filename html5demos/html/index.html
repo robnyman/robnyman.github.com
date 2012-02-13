@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Page</title>
+        <title>HTML5 demo page</title>
         <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
     </head>
 
@@ -11,35 +11,43 @@
         <div class="container">
 
             <header class="header" role="banner">
-                Logo, site navigation
+                <h1>HTML5 demo page</h1>
             </header>
 
             <div class="main">
                 <article class="main-content" role="main">
-                    <h1>Hello Stockholm!</h1>
+
+                    <aside class="additional-content" aria-live="polite" aria-relevant="additions" aria-atomic="true">
+                        <p>This is a demo page displaying HTML5 semantics and APIs, combined with other related technologies. You know, HTML5 friends.</p>
+                        <p>In the <a href="js/base.js">base.js</a> file you can see various code being called that generates content in thgis page.</p>
+                        <p>All the <a href="https://github.com/robnyman/robnyman.github.com">code is available at GitHub</a>, for this page and other related demos.
+                        </p>
+                    </aside>
 
                     <h2>Figure</h2>
+
+                    <p>This image below is loaded via JavaScript, and at reload, if available, as a data URL from localStorage.</p>
                     <figure>
-                        <img src="elephant.jpg" alt="A close up of an elephant">
+                        <img id="elephant" src="about:blank" alt="A close up of an elephant">
                         <figcaption>A mighty big elephant, and mighty close too!</figcaption>
                     </figure>
+
+                    
+                    <h2>Custom data attributes</h2>
+                    <p id="custom-attributes" data-type="police" data-value="I am da law!">An element with custom data attributes</p>
+
 
                     <h2>SVG</h2>
                     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="110" version="1.1" >
                         <circle cx="100" cy="52" r="50" stroke="#0000ff" stroke-width="1" fill="#ff0000" />
                     </svg>
 
+
                     <h2>classList</h2>
                     <div id="classlist-demo">
                         classList element
                     </div>
 
-                    <h2>Custom data attributes</h2>
-                    <p id="custom-attributes" data-type="police" data-value="I am da law!">An element with custom data attributes</p>
-
-                    <aside class="additional-content" aria-live="polite" aria-relevant="additions" aria-atomic="true">
-                        Some sidebar content
-                    </aside>
 
                 </article>
             </div>

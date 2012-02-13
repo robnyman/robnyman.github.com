@@ -3,16 +3,12 @@ body {
     background: #ccc;
 }
 
-h2 {
-    margin-top: 40px;
+h1 {
+    margin-top: 0;
 }
 
-.container {
-    width: 600px;
-    background: #fff;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 30px;
+h2 {
+    margin-top: 40px;
 }
 
 img {
@@ -25,8 +21,30 @@ figcaption {
     font-style: italic;
 }
 
+.container {
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.main-content {
+    overflow: hidden;
+}
+
 .additional-content {
     float: right;
+    width: 300px;
+    height: 400px;
+    padding: 10px;
+    background: #ccc;
+    border-radius: 5px
 }
 
 .page-footer {
