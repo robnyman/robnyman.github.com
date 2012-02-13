@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+# VERSION 10
+
+CACHE:
+offline.html
+base.css
+
+FALLBACK:
+online.css offline.css
