@@ -19,12 +19,6 @@ h2 {
     padding: 30px;
 }
 
-@media screen and (max-width: 399px) {
-	.container {
-		width: 100%;
-	}
-}
-
 header {
     margin-bottom: 20px;
     border-bottom: 1px solid #000;
@@ -75,3 +69,14 @@ li span {
     padding-top: 10px;
 }
 
+@media screen and (max-width: 800px) {
+	.container {
+		width: 100%;
+        margin-top: 50px;
+        padding: 10px;
+	}
+
+    li {
+        
+    }
+}
