@@ -1,6 +1,6 @@
 body {
     font: 12px "Helvetica Neue", "Helvetica", sans-serif;
-    background: #ccc;
+    background: #000 url(../images/mozilla-tab.png) no-repeat right top;
 }
 
 h1 {
