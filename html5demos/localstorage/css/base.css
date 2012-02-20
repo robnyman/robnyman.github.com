@@ -1,0 +1,51 @@
+body {
+    font: 12px "Helvetica Neue", "Helvetica", sans-serif;
+    background: #ccc;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+img {
+    padding: 10px;
+    box-shadow: 0 0 10px 2px #ccc;
+    margin-bottom: 5px;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+.container {
+    width: 900px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+
+.main-content {
+    overflow: hidden;
+}
+
+.additional-content {
+    float: right;
+    width: 300px;
+    height: 400px;
+    padding: 10px;
+    background: #ccc;
+    border-radius: 5px
+}
+
+.page-footer {
+    border-top: 1px solid #000;
+    margin-top: 30px;
+    padding-top: 10px;
+}
+
