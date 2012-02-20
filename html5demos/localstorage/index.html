@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>HTML5 demo with localStorage and saving images</title>
+        <title>HTML5 demo with localStorage and saving images and files in it</title>
         <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
     </head>
 
@@ -11,7 +11,7 @@
         <div class="container">
 
             <header class="header" role="banner">
-                <h1>HTML5 demo with localStorage and saving images</h1>
+                <h1>HTML5 demo with localStorage and saving images and files in it</h1>
             </header>
 
             <div class="main">
@@ -19,12 +19,13 @@
 
                     <aside class="additional-content" aria-live="polite" aria-relevant="additions" aria-atomic="true">
                         <p>This is a demo page displaying how you can use localStorage to save image files in it as Data URLs. The first time you load this page the picture of the elephant is saved in localStorage, and for following page loads the same date, it uses the image stored in localStorage.</p>
+                        <p>The second image of the rhino is read through an XMLHttpRequest as an ArrayBuffer, put into a Blob and then read out as a Data URL through a FileReader object.</p>
                         <p>In the <a href="js/base.js">base.js</a> file you can see the code to achieve this.</p>
                         <p>All the <a href="https://github.com/robnyman/robnyman.github.com">code is available at GitHub</a>, for this page and other related demos.
                         </p>
                     </aside>
 
-                    <h2>An elephant</h2>
+                    <h2>An elephant, with localStorage</h2>
 
                     <figure>
                         <img id="elephant" src="about:blank" alt="A close up of an elephant">
@@ -33,6 +34,13 @@
                             <img src="elephant.png" alt="">
                         </noscript>    
                         <figcaption>A mighty big elephant, and mighty close too!</figcaption>
+                    </figure>
+
+                    
+                    <h2>Rhino with XMLHttpRequest and reading file data</h2>
+                    <figure>
+                        <img id="rhino" src="about:blank" alt="A close up of a rhino">
+                        <figcaption>Rhinos are big!</figcaption>
                     </figure>
 
                 </article>

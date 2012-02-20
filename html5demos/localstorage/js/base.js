@@ -1,13 +1,13 @@
 (function () {
     // localStorage
-    var imgInfo = JSON.parse(localStorage.getItem("imgInfo")) || {},
+    var storageFiles = JSON.parse(localStorage.getItem("storageFiles")) || {},
         elephant = document.getElementById("elephant"),
-        imgInfoDate = imgInfo.date,
+        storageFilesDate = storageFiles.date,
         date = new Date(),
         todaysDate = (date.getMonth() + 1).toString() + date.getDate().toString();
 
     // Compare date and create localStorage if it's not existing/too old   
-    if (typeof imgInfoDate === "undefined" || imgInfoDate < todaysDate) {
+    if (typeof storageFilesDate === "undefined" || storageFilesDate < todaysDate) {
         // Take action when the image has loaded
         elephant.addEventListener("load", function () {
             var imgCanvas = document.createElement("canvas"),
@@ -21,13 +21,13 @@
             imgContext.drawImage(elephant, 0, 0, elephant.width, elephant.height);
 
             // Save image as a data URL
-            imgInfo.src = imgCanvas.toDataURL("image/png");
+            storageFiles.elephant = imgCanvas.toDataURL("image/png");
 
             // Set date for localStorage
-            imgInfo.date = todaysDate;
+            storageFiles.date = todaysDate;
 
             // Save as JSON in localStorage
-            localStorage.setItem("imgInfo", JSON.stringify(imgInfo));
+            localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
         }, false);
 
         // Set initial image src    
@@ -35,6 +35,42 @@
     }
     else {
         // Use image from localStorage
-        elephant.setAttribute("src", imgInfo.src);
+        elephant.setAttribute("src", storageFiles.elephant);
+    }
+
+    // Getting a file through XMLHttpRequest as an arraybuffer and creating a Blob
+
+
+    var rhinoStorage = localStorage.getItem("rhino"),
+        rhino = document.getElementById("rhino");
+    if (rhinoStorage) {
+        rhino.setAttribute("src", rhinoStorage);
+    }
+    else {
+        var xhr = new XMLHttpRequest(),
+            blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
+            blob,
+            fileReader = new FileReader();
+
+        xhr.open("GET", "rhino.png", true);
+        xhr.responseType = "arraybuffer";
+
+        xhr.addEventListener("load", function () {
+            if (xhr.status === 200) {
+                blobBuilder.append(xhr.response);
+                blob = blobBuilder.getBlob("image/png");
+
+                // onload needed since Google Chrome doesn't support addEventListener for FileReader
+                fileReader.onload = function (evt) {
+                    var result = evt.target.result; 
+                    rhino.setAttribute("src", result);
+                    storageFiles.rhino = result;
+                    localStorage.setItem("rhino", result);
+                };
+                fileReader.readAsDataURL(blob);
+            }
+        }, false);
+
+        xhr.send();
     }
 })();
