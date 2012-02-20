@@ -1,5 +1,5 @@
 (function () {
-    // localStorage
+    // localStorage with image
     var storageFiles = JSON.parse(localStorage.getItem("storageFiles")) || {},
         elephant = document.getElementById("elephant"),
         storageFilesDate = storageFiles.date,
@@ -39,38 +39,44 @@
     }
 
     // Getting a file through XMLHttpRequest as an arraybuffer and creating a Blob
-
-
     var rhinoStorage = localStorage.getItem("rhino"),
         rhino = document.getElementById("rhino");
     if (rhinoStorage) {
+        // Reuse existing Data URL from localStorage
         rhino.setAttribute("src", rhinoStorage);
     }
     else {
+        // Create XHR, BlobBuilder and FileReader objects
         var xhr = new XMLHttpRequest(),
             blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
             blob,
             fileReader = new FileReader();
 
         xhr.open("GET", "rhino.png", true);
+        // Set the responseType to arraybuffer. "blob" is an option too, rendering BlobBuilder unnecessary, but the support for "blob" is not widespread enough yet
         xhr.responseType = "arraybuffer";
 
         xhr.addEventListener("load", function () {
             if (xhr.status === 200) {
+                // Append the response to the BlobBuilder
                 blobBuilder.append(xhr.response);
+                // Create a blob with the desired MIME type
                 blob = blobBuilder.getBlob("image/png");
 
                 // onload needed since Google Chrome doesn't support addEventListener for FileReader
                 fileReader.onload = function (evt) {
-                    var result = evt.target.result; 
+                    // Read out file contents as a Data URL
+                    var result = evt.target.result;
+                    // Set image src to Data URL
                     rhino.setAttribute("src", result);
-                    storageFiles.rhino = result;
+                    // Store Data URL in localStorage
                     localStorage.setItem("rhino", result);
                 };
+                // Load blob as Data URL
                 fileReader.readAsDataURL(blob);
             }
         }, false);
-
+        // Send XHR
         xhr.send();
     }
 })();
