@@ -27,7 +27,12 @@
             storageFiles.date = todaysDate;
 
             // Save as JSON in localStorage
-            localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
+            try {
+                localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
+            }
+            catch (e) {
+                    console.log("Storage failed: " + e);                
+            }
         }, false);
 
         // Set initial image src    
@@ -70,7 +75,12 @@
                     // Set image src to Data URL
                     rhino.setAttribute("src", result);
                     // Store Data URL in localStorage
-                    localStorage.setItem("rhino", result);
+                    try {
+                        localStorage.setItem("rhino", result);
+                    }
+                    catch (e) {
+                        console.log("Storage failed: " + e);
+                    }
                 };
                 // Load blob as Data URL
                 fileReader.readAsDataURL(blob);
