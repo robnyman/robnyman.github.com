@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML5 with storing files in IndexedDB</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <header class="header" role="banner">
+                <h1>HTML5 with storing files in IndexedDB</h1>
+            </header>
+
+            <div class="main">
+                <article class="main-content" role="main">
+
+                    <aside class="additional-content" aria-live="polite" aria-relevant="additions" aria-atomic="true">
+                        <p>This is a demo page displaying HTML5 IndexedDB and how to store files in it. It uses XMLHttpRequest Level 2 and BlobBuilder as well.</p>
+                        <p>In the <a href="js/base.js">base.js</a> file you can see various code being called that generates content in this page.</p>
+                        <p>All the <a href="https://github.com/robnyman/robnyman.github.com">code is available at GitHub</a>, for this page and other related demos.
+                        </p>
+                    </aside>
+
+
+                    <div id="todoItems">
+
+                    </div>
+
+                    <h2>Figure</h2>
+
+                    <p>This image below is loaded via JavaScript, and at reload, if available, as a data URL from IndexedDB.</p>
+                    <figure>
+                        <img id="elephant" src="about:blank" alt="A close up of an elephant">
+                        <figcaption>A mighty big elephant, and mighty close too!</figcaption>
+                    </figure>
+
+                </article>
+            </div>
+
+            <footer class="page-footer" role="contentinfo">
+                Created by <a href="http://robertnyman.com/">Robert Nyman</a><br>
+                <a href="https://github.com/robnyman/robnyman.github.com">All demo code at GitHub</a>.
+            </footer>
+
+        </div>
+
+        <script src="js/base.js"></script>
+
+    </body>
+</html>
