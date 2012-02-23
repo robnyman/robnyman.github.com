@@ -1,10 +1,11 @@
 (function () {
     // IndexedDB
     var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB,
-        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
+        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction,
+        dbVersion = "1.0";
 
     // Create/open database
-    var request = indexedDB.open("elephantFiles", 1),
+    var request = indexedDB.open("elephantFiles", dbVersion),
         db,
         createObjectStore = function (dataBase) {
             // Check if the desired objectStore exists - if not, create it
@@ -97,13 +98,18 @@
         console.log("Success creating/accessing IndexedDB database");
         db = request.result;
 
-        // Interim solution for Google Chrome to be able to write to the database. Will be deprecated
+        // Interim solution for Google Chrome to create an objectStore. Will be deprecated
         if (db.setVersion) {
-            var setVersion = db.setVersion("1");
-            setVersion.onsuccess = function () {
-                createObjectStore(db);
+            if (db.version !== dbVersion) {
+                var setVersion = db.setVersion(dbVersion);
+                setVersion.onsuccess = function () {
+                    createObjectStore(db);
+                    getImageFile();
+                };
+            }
+            else {
                 getImageFile();
-            };
+            }
         }
         else {
             getImageFile();
