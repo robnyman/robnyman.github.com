@@ -1,23 +1,46 @@
 (function () {
     // IndexedDB
     var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB,
-        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction,
-        upgradeNeededCalled = false;
+        IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
 
     var request = indexedDB.open("elephantFiles", 1),
         db,
-        putElephantInDb = function () {
-            console.log("Putting elephants in IndexedDB");
-            console.log("Contains elephants: " + db.objectStoreNames.contains("elephants"));
-            if(!db.objectStoreNames.contains("elephants")) {
+        createObjectStore = function (dataBase) {
+            if(!dataBase.objectStoreNames.contains("elephants")) {
                 console.log("Creating objectStore")
-                db.createObjectStore("elephants");
+                dataBase.createObjectStore("elephants");
             }
+        },
+        getImageFile = function () {
+            // Create XHR, BlobBuilder and FileReader objects
+            var xhr = new XMLHttpRequest(),
+                blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
+                blob,
+                fileReader = new FileReader();
 
-            var trans = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
-            console.log(trans);
+            xhr.open("GET", "elephant.png", true);
+            // Set the responseType to arraybuffer. "blob" is an option too, rendering BlobBuilder unnecessary, but the support for "blob" is not widespread enough yet
+            xhr.responseType = "arraybuffer";
 
-            var putElephant = trans.objectStore("elephants").put("ele", "ELEPHANT");
+            xhr.addEventListener("load", function () {
+                if (xhr.status === 200) {
+                    // Append the response to the BlobBuilder
+                    blobBuilder.append(xhr.response);
+                    // Create a blob with the desired MIME type
+                    blob = blobBuilder.getBlob("image/png");
+                    
+                    console.log("Image retrieved");
+                    putElephantInDb(blob);
+                }
+            }, false);
+            // Send XHR
+            xhr.send();
+        },
+        putElephantInDb = function (blob) {
+            console.log("Putting elephants in IndexedDB");
+
+            var transaction = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
+            var putElephant = transaction.objectStore("elephants").put(blob, "image");
 
             putElephant.onerror = function () {
                console.log("Elphant putting failed");
@@ -25,6 +48,10 @@
 
             putElephant.onsuccess = function () {
                console.log("Success: " + putElephant.result);
+               var getElephant = transaction.objectStore("elephants").get("image");
+               getElephant.onsuccess = function (event) {
+                   console.log("Got elephant!" + event.target.result);
+               };
             };
 
         };
@@ -34,24 +61,24 @@
     };
 
     request.onsuccess = function (event) {
-        console.log("Success creating IndexedDB database");
+        console.log("Success accessing IndexedDB database");
         db = request.result;
 
         // For Google Chrome
         if (db.setVersion) {
             var setVersion = db.setVersion("1");
-            setVersion.onsuccess = putElephantInDb;
+            setVersion.onsuccess = function () {
+                createObjectStore(db);
+                getImageFile();
+            };
         }
-        else if (!upgradeNeededCalled) {
-            // If database already exists and onupgradeneeded won't be triggered
-            putElephantInDb();
+        else {
+            getImageFile();
         }
     }
     
     // For latest Firefox versions
     request.onupgradeneeded = function (event) {
-        db = request.result;
-        upgradeNeededCalled = true;
-        putElephantInDb();
+        createObjectStore(event.currentTarget.result);
     };
 })();
