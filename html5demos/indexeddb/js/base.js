@@ -13,6 +13,7 @@
                 dataBase.createObjectStore("elephants");
             }
         },
+
         getImageFile = function () {
             // Create XHR and BlobBuilder
             var xhr = new XMLHttpRequest(),
@@ -39,6 +40,7 @@
             // Send XHR
             xhr.send();
         },
+
         putElephantInDb = function (blob) {
             console.log("Putting elephants in IndexedDB");
 
@@ -108,7 +110,7 @@
         }
     }
     
-    // For latest Firefox versions
+    // For future use. Currently only in latest Firefox versions
     request.onupgradeneeded = function (event) {
         createObjectStore(event.currentTarget.result);
     };
