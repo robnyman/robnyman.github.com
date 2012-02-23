@@ -18,22 +18,17 @@
                 <article class="main-content" role="main">
 
                     <aside class="additional-content" aria-live="polite" aria-relevant="additions" aria-atomic="true">
-                        <p>This is a demo page displaying HTML5 IndexedDB and how to store files in it. It uses XMLHttpRequest Level 2 and BlobBuilder as well.</p>
+                        <p>This is a demo page displaying HTML5 IndexedDB and how to store files in it. It uses XMLHttpRequest Level 2, BlobBuilder  and createObjectURL as well.</p>
                         <p>In the <a href="js/base.js">base.js</a> file you can see various code being called that generates content in this page.</p>
                         <p>All the <a href="https://github.com/robnyman/robnyman.github.com">code is available at GitHub</a>, for this page and other related demos.
                         </p>
                     </aside>
 
-
-                    <div id="todoItems">
-
-                    </div>
-
                     <h2>Figure</h2>
 
-                    <p>This image below is loaded via JavaScript, and at reload, if available, as a data URL from IndexedDB.</p>
+                    <p>If supported, this image below is loaded from IndexedDB through a blob URL.</p>
                     <figure>
-                        <img id="elephant" src="about:blank" alt="A close up of an elephant">
+                        <img id="elephant" src="elephant.png" alt="A close up of an elephant">
                         <figcaption>A mighty big elephant, and mighty close too!</figcaption>
                     </figure>
 

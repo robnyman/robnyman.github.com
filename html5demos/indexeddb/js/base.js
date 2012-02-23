@@ -3,20 +3,21 @@
     var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB,
         IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction;
 
+    // Create/open database
     var request = indexedDB.open("elephantFiles", 1),
         db,
         createObjectStore = function (dataBase) {
+            // Check if the desired objectStore exists - if not, create it
             if(!dataBase.objectStoreNames.contains("elephants")) {
                 console.log("Creating objectStore")
                 dataBase.createObjectStore("elephants");
             }
         },
         getImageFile = function () {
-            // Create XHR, BlobBuilder and FileReader objects
+            // Create XHR and BlobBuilder
             var xhr = new XMLHttpRequest(),
                 blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
-                blob,
-                fileReader = new FileReader();
+                blob;
 
             xhr.open("GET", "elephant.png", true);
             // Set the responseType to arraybuffer. "blob" is an option too, rendering BlobBuilder unnecessary, but the support for "blob" is not widespread enough yet
@@ -30,6 +31,8 @@
                     blob = blobBuilder.getBlob("image/png");
                     
                     console.log("Image retrieved");
+
+                    // Put the received blob into IndexedDB
                     putElephantInDb(blob);
                 }
             }, false);
@@ -39,32 +42,60 @@
         putElephantInDb = function (blob) {
             console.log("Putting elephants in IndexedDB");
 
+            // Open a transaction to the database
             var transaction = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
+
+            // Put the blob into the dabase
             var putElephant = transaction.objectStore("elephants").put(blob, "image");
 
+            // Operation failed
             putElephant.onerror = function () {
                console.log("Elphant putting failed");
             };
 
+            // Operation succeded!
             putElephant.onsuccess = function () {
-               console.log("Success: " + putElephant.result);
-               var getElephant = transaction.objectStore("elephants").get("image");
-               getElephant.onsuccess = function (event) {
-                   console.log("Got elephant!" + event.target.result);
-               };
+                console.log("Success: " + putElephant.result);
+
+                // Retrieve the file that was just stored
+                var getElephant = transaction.objectStore("elephants").get("image");
+
+                // Failed to get elephant file in database
+                getElephant.onerror = function (event) {
+                    console.log("Failed to get elephant");
+                };
+
+                // Got the elephant file
+                getElephant.onsuccess = function (event) {
+                    var imgFile = event.target.result;
+                    console.log("Got elephant!" + imgFile);
+
+                    // Get window.URL object
+                    var URL = window.URL || window.webkitURL;
+
+                    // Create and revoke ObjectURL
+                    var imgURL = URL.createObjectURL(imgFile);
+
+                    // Set img src to ObjectURL
+                    var imgElephant = document.getElementById("elephant");
+                    imgElephant.setAttribute("src", imgURL);                    
+
+                    // Revoking ObjectURL
+                    URL.revokeObjectURL(imgURL);
+                };
             };
 
         };
 
     request.onerror = function (event) {
-        console.log("Error creating IndexedDB database");
+        console.log("Error creating/accessing IndexedDB database");
     };
 
     request.onsuccess = function (event) {
-        console.log("Success accessing IndexedDB database");
+        console.log("Success creating/accessing IndexedDB database");
         db = request.result;
 
-        // For Google Chrome
+        // Interim solution for Google Chrome to be able to write to the database. Will be deprecated
         if (db.setVersion) {
             var setVersion = db.setVersion("1");
             setVersion.onsuccess = function () {
