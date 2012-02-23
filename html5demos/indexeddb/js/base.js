@@ -8,11 +8,9 @@
     var request = indexedDB.open("elephantFiles", dbVersion),
         db,
         createObjectStore = function (dataBase) {
-            // Check if the desired objectStore exists - if not, create it
-            if(!dataBase.objectStoreNames.contains("elephants")) {
-                console.log("Creating objectStore")
-                dataBase.createObjectStore("elephants");
-            }
+            // Create an objectStore
+            console.log("Creating objectStore")
+            dataBase.createObjectStore("elephants");
         },
 
         getImageFile = function () {
@@ -39,7 +37,7 @@
                         blob = blobBuilder.getBlob("image/png");
                     }
                     else {
-                        blob = new Blob(response);
+                        blob = new Blob([response]);
                     }
                     
                     if (blob) {
@@ -95,7 +93,7 @@
         
         // Interim solution for Google Chrome to create an objectStore. Will be deprecated
         if (db.setVersion) {
-            if (db.version !== dbVersion) {
+            if (db.version != dbVersion) {
                 var setVersion = db.setVersion(dbVersion);
                 setVersion.onsuccess = function () {
                     createObjectStore(db);
@@ -113,6 +111,6 @@
     
     // For future use. Currently only in latest Firefox versions
     request.onupgradeneeded = function (event) {
-        createObjectStore(event.currentTarget.result);
+        createObjectStore(event.target.result);
     };
 })();
