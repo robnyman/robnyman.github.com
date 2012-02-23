@@ -2,7 +2,7 @@
     // IndexedDB
     var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.OIndexedDB || window.msIndexedDB,
         IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.OIDBTransaction || window.msIDBTransaction,
-        dbVersion = "1.0";
+        dbVersion = 1.0;
 
     // Create/open database
     var request = indexedDB.open("elephantFiles", dbVersion),
@@ -27,15 +27,25 @@
 
             xhr.addEventListener("load", function () {
                 if (xhr.status === 200) {
-                    // Append the response to the BlobBuilder
-                    blobBuilder.append(xhr.response);
-                    // Create a blob with the desired MIME type
-                    blob = blobBuilder.getBlob("image/png");
-                    
                     console.log("Image retrieved");
+                    
+                    // File as response
+                    var response = xhr.response;
 
-                    // Put the received blob into IndexedDB
-                    putElephantInDb(blob);
+                    if (blobBuilder) {
+                        // Append the response to the BlobBuilder
+                        blobBuilder.append(response);
+                        // Create a blob with the desired MIME type
+                        blob = blobBuilder.getBlob("image/png");
+                    }
+                    else {
+                        blob = new Blob(response);
+                    }
+                    
+                    if (blob) {
+                        // Put the received blob into IndexedDB
+                        putElephantInDb(blob);
+                    }
                 }
             }, false);
             // Send XHR
@@ -49,45 +59,26 @@
             var transaction = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
 
             // Put the blob into the dabase
-            var putElephant = transaction.objectStore("elephants").put(blob, "image");
+            transaction.objectStore("elephants").put(blob, "image");
 
-            // Operation failed
-            putElephant.onerror = function () {
-               console.log("Elphant putting failed");
+            // Retrieve the file that was just stored
+            transaction.objectStore("elephants").get("image").onsuccess = function (event) {
+                var imgFile = event.target.result;
+                console.log("Got elephant!" + imgFile);
+
+                // Get window.URL object
+                var URL = window.URL || window.webkitURL;
+
+                // Create and revoke ObjectURL
+                var imgURL = URL.createObjectURL(imgFile);
+
+                // Set img src to ObjectURL
+                var imgElephant = document.getElementById("elephant");
+                imgElephant.setAttribute("src", imgURL);
+
+                // Revoking ObjectURL
+                URL.revokeObjectURL(imgURL);
             };
-
-            // Operation succeded!
-            putElephant.onsuccess = function () {
-                console.log("Success: " + putElephant.result);
-
-                // Retrieve the file that was just stored
-                var getElephant = transaction.objectStore("elephants").get("image");
-
-                // Failed to get elephant file in database
-                getElephant.onerror = function (event) {
-                    console.log("Failed to get elephant");
-                };
-
-                // Got the elephant file
-                getElephant.onsuccess = function (event) {
-                    var imgFile = event.target.result;
-                    console.log("Got elephant!" + imgFile);
-
-                    // Get window.URL object
-                    var URL = window.URL || window.webkitURL;
-
-                    // Create and revoke ObjectURL
-                    var imgURL = URL.createObjectURL(imgFile);
-
-                    // Set img src to ObjectURL
-                    var imgElephant = document.getElementById("elephant");
-                    imgElephant.setAttribute("src", imgURL);                    
-
-                    // Revoking ObjectURL
-                    URL.revokeObjectURL(imgURL);
-                };
-            };
-
         };
 
     request.onerror = function (event) {
@@ -98,6 +89,10 @@
         console.log("Success creating/accessing IndexedDB database");
         db = request.result;
 
+        db.onerror = function (event) {
+            console.log("Error creating/accessing IndexedDB database");
+        };
+        
         // Interim solution for Google Chrome to create an objectStore. Will be deprecated
         if (db.setVersion) {
             if (db.version !== dbVersion) {
