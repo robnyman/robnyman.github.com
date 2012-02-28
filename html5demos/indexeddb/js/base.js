@@ -16,34 +16,22 @@
         getImageFile = function () {
             // Create XHR and BlobBuilder
             var xhr = new XMLHttpRequest(),
-                blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
                 blob;
 
             xhr.open("GET", "elephant.png", true);
-            // Set the responseType to arraybuffer. "blob" is an option too, rendering BlobBuilder unnecessary, but the support for "blob" is not widespread enough yet
-            xhr.responseType = "arraybuffer";
+            // Set the responseType to blob
+            xhr.responseType = "blob";
 
             xhr.addEventListener("load", function () {
                 if (xhr.status === 200) {
                     console.log("Image retrieved");
                     
-                    // File as response
-                    var response = xhr.response;
+                    // Blob as response
+                    blob = xhr.response;
+                    console.log("Blob:" + blob);
 
-                    if (blobBuilder) {
-                        // Append the response to the BlobBuilder
-                        blobBuilder.append(response);
-                        // Create a blob with the desired MIME type
-                        blob = blobBuilder.getBlob("image/png");
-                    }
-                    else {
-                        blob = new Blob([response]);
-                    }
-                    
-                    if (blob) {
-                        // Put the received blob into IndexedDB
-                        putElephantInDb(blob);
-                    }
+                    // Put the received blob into IndexedDB
+                    putElephantInDb(blob);
                 }
             }, false);
             // Send XHR
@@ -57,7 +45,10 @@
             var transaction = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
 
             // Put the blob into the dabase
-            transaction.objectStore("elephants").put(blob, "image");
+            var put = transaction.objectStore("elephants").put(blob, "image");
+            put.onerror = function (e) {
+                console.dir(e.description);
+            };
 
             // Retrieve the file that was just stored
             transaction.objectStore("elephants").get("image").onsuccess = function (event) {
