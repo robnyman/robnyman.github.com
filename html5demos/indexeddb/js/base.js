@@ -46,9 +46,6 @@
 
             // Put the blob into the dabase
             var put = transaction.objectStore("elephants").put(blob, "image");
-            put.onerror = function (e) {
-                console.dir(e.description);
-            };
 
             // Retrieve the file that was just stored
             transaction.objectStore("elephants").get("image").onsuccess = function (event) {
