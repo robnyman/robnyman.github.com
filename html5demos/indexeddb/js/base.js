@@ -14,7 +14,7 @@
         },
 
         getImageFile = function () {
-            // Create XHR and BlobBuilder
+            // Create XHR
             var xhr = new XMLHttpRequest(),
                 blob;
 
