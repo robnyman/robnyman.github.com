@@ -14,7 +14,7 @@
                     // Get window.URL object
                     var URL = window.URL || window.webkitURL;
 
-                    // Create and revoke ObjectURL
+                    // Create ObjectURL
                     var imgURL = URL.createObjectURL(file);
 
                     // Set img src to ObjectURL
