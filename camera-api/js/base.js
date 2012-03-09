@@ -5,7 +5,7 @@
     if (takePicture && showPicture) {
         // Set events
         takePicture.onchange = function (event) {
-            // Get a referene to the taken picture or chosen file
+            // Get a reference to the taken picture or chosen file
             var files = event.target.files,
                 file;
             if (files && files.length > 0) {
@@ -33,7 +33,7 @@
                         fileReader.readAsDataURL(file);
                     }
                     catch (e) {
-                        // 
+                        // Display error message
                         var error = document.querySelector("#error");
                         if (error) {
                             error.innerHTML = "Neither createObjectURL or FileReader are supported";
