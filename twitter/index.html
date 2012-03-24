@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Twitter reactions</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h1>
+                Twitter reactions
+            </h1>
+
+            <section class="main-content">
+                
+
+                <!-- Twitter -->
+                <h2>Twitter</h2>
+
+                <!-- Fixed URL -->
+                <!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://hacks.mozilla.org">Tweet</a> -->
+                
+                <!-- Page URL -->
+                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                </script>
+
+                <!-- Topsy -->
+                <h2>Topsy</h2>
+                <div id="twitter-reactions"></div>
+
+                <script>
+                    function twitterReactions (json) {
+                        // Checking the JSON response
+                        var results = json.response.list;
+
+                        // If there are any results, iterate over them
+                        if (typeof results !== "undefined") {
+                            var resultsLength = results.length,
+                                twitterReactionsPresenter = document.getElementById("twitter-reactions");
+                            resultsLength = (resultsLength >= 100)? "100+" : resultsLength;   
+
+                            // Apply all tweets into the tweet presenting element
+                            twitterReactionsPresenter.innerHTML = '<a href="http://topsy.com/hacks.mozilla.org/">' + resultsLength + '</a>';
+                        }
+                    }
+                </script>
+                <script src="http://otter.topsy.com/trackbacks.js?callback=twitterReactions&amp;perpage=100&amp;url=http://hacks.mozilla.org"></script>
+
+
+            </section>
+
+            <p class="footer"></p>
+        </div>
+
+
+        <script src="js/base.js"></script>
+
+
+    </body>
+</html>
