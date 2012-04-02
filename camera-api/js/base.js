@@ -1,5 +1,5 @@
 (function () {
-    var takePicture = document.querySelector("#take-picture");
+    var takePicture = document.querySelector("#take-picture"),
         showPicture = document.querySelector("#show-picture");
 
     if (takePicture && showPicture) {
