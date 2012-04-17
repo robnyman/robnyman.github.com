@@ -1,0 +1,21 @@
+{
+    "version": "1.0",
+    "name": "ABBAInfo",
+    "description": "Getting some ABBA info",
+    "icons": {
+        "16": "/abbainfo/images/icon-16.png",
+        "48": "/abbainfo/images/icon-48.png",
+        "128": "/abbainfo/images/icon-128.png"
+    },
+    "developer": {
+        "name": "Robert Nyman",
+        "url": "http://robertnyman.com"
+    },
+    "installs_allowed_from": [
+        "*"
+    ],
+    "launch_path": "/abbainfo/",
+    "locales": {
+    },
+    "default_locale": "en"
+}

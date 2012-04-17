@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TweetView</title>
+        <link rel="stylesheet" href="css/base.css" type="text/css" media="screen">
+    </head>
+
+    <body>
+
+        <div id="container">
+        </div>
+
+
+        <script type="text/javascript">
+            (function () {
+                window.addEventListener("keydown", function (evt) {
+                    if (evt.keyCode === 82) {
+                        location.reload();
+                    }
+                }, false);
+            })();
+
+            function twitterCallback (response) {
+                var results = response.results;
+                for (var i = 0, l=results.length; i<l; i++) {
+                    results[i]
+                }
+                console.log(JSON.stringify(response));
+            }
+        </script>
+
+        
+        <script src="http://search.twitter.com/search.json?q=@robertnyman&callback=twitterCallback">
+            
+        </script>
+
+    </body>
+</html>

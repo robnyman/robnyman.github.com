@@ -1,0 +1,135 @@
+/* General font styles */
+html {
+	font: 100%/1.3 Verdana, Helvetica, Arial, sans-serif;
+}
+
+body {
+	font: 70%/1.3 Verdana, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font: bold 2em Arial, sans-serif;
+}
+                       
+h2 {                     
+	font: bold 1.5em Arial, sans-serif;
+}
+                       
+h3 {                     
+	font: bold 1.25em Arial, sans-serif;
+}
+                       
+h4 {                     
+	font: bold 1.1em Arial, sans-serif;
+}
+
+/* Default resetting */
+html, body, form, fieldset, legend, dt, dd {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl {
+	margin: 0 0 1em;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0.5em;
+}
+
+pre {
+	font-size: 1.5em;
+}
+
+li, dd {
+	margin-left: 1.5em;
+}
+
+img {
+    border: none;
+	vertical-align: middle;
+}
+
+/* Basic element styles */
+a {
+	color: #000;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+html {
+	color: #000;
+	background: gold;
+	min-height: 100%;	
+}
+
+body {
+	margin-bottom: 30px;
+}
+
+ul {
+    margin: 10px 0;
+}
+
+
+/* Structure */
+.container {
+	min-width: 400px;
+    max-width: 760px;
+	min-height: 600px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: none;
+	margin: 20px auto;
+	padding: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 1px 1px 10px #000;
+	-webkit-box-shadow: 1px 1px 5px #000;
+	box-shadow: 1px 1px 10px #000;
+}
+
+@media screen and (max-width: 320px) {
+    #container {
+        width: 280px;
+        padding: 10px;
+    }
+}
+
+.nav {
+    float: left;
+    width: 30%;
+}
+
+.main-content {
+    float: right;
+    width: 70%;
+}
+
+.content-frame {
+    width: 100%;
+    height: 500px;
+    /*border: 1px solid red;*/
+}
+
+.info-content {
+    background: #fff;
+}
+
+/* Fullscreen */
+html:-moz-full-screen,
+html:-webkit-full-screen {
+    background: red;
+}
+
+html:-moz-full-screen {
+    background: red;
+}
+
+html:-webkit-full-screen {
+    background: red;
+}
