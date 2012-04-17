@@ -38,19 +38,19 @@
                 if (installABBAInfo) {
                     installABBAInfo.addEventListener("click", function () {
                         var mozApps = navigator.mozApps.install;
-                        alert(mozApps)
                         if (mozApps) {
-                            navigator.mozApps.install(
-                            "http://localhost/abbainfo/manifest.webapp",
-                            {},
-                            function () {
+                            console.log("Try and install");
+                            var installObject = navigator.mozApps.install("http://localhost/abbainfo/manifest.webapp", {});
+
+                            installObject.onsuccess = function () {
                                 console.log("Worked!");
                                 console.log(result);
-                            }, 
-                            function (result) {
+                            };
+
+                            installObject.onerror = function (result) {
                                 console.log("Failed :-(");
                                 console.log(result);
-                            });
+                            };
                         }
                     }, false);
                 }
