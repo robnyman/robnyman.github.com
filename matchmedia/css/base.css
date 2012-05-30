@@ -102,3 +102,9 @@ ul {
         padding: 10px;
     }
 }
+
+.footer {
+    border-top: 1px solid #000;
+    margin-top: 40px;
+    padding-top: 10px;
+}
