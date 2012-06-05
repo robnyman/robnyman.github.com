@@ -22,7 +22,7 @@
     }
 
     function setWidthValue (mediaQueryList) {
-        width600.innerHTML = mediaQueryList.matches;
+        width600.innerHTML = mediaQueryList.media;
     }
 
     function setHeightValue (mediaQueryList) {
@@ -33,6 +33,7 @@
         portraitOrientation.innerHTML = mediaQueryList.matches;
     }
 
+    // Setting initial values at load
     function setValues () {
         width600.innerHTML = width600Check.matches;
         height500.innerHTML = height500Check.matches;
