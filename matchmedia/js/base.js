@@ -16,9 +16,9 @@
         portraitOrientationCheck = window.matchMedia("(orientation: portrait)");
        
         // Add listeners for detecting changes
-        width600Check.addListener(setValues);
-        height500Check.addListener(setValues);
-        portraitOrientationCheck.addListener(setValues);
+        width600Check.addListener(setWidthValue);
+        height500Check.addListener(setHeightValue);
+        portraitOrientationCheck.addListener(setOrientationValue);
     }
 
     function setWidthValue (mediaQueryList) {
