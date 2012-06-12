@@ -22,7 +22,7 @@
     }
 
     function setWidthValue (mediaQueryList) {
-        width600.innerHTML = mediaQueryList.media;
+        width600.innerHTML = mediaQueryList.matches;
     }
 
     function setHeightValue (mediaQueryList) {
