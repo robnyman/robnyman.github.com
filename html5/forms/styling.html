@@ -55,7 +55,7 @@
                 background: yellow;
             }
 
-            input:required {
+            input[required] {
                 border: 1px solid #00f;
             }
 
@@ -94,19 +94,6 @@
 			div.form-submit {
    				float: none;
 			}
-			
-input::-webkit-validation-bubble-message {
-    color: #f00;
-    background: #000;
-    border: 10px solid #f00;
-    -webkit-box-shadow: 0 0 0 0;
-}
-
-input::-webkit-validation-bubble-arrow {
-    background: #ff3456;
-    border-color: orange;
-    -webkit-box-shadow: 0 0 0 0;
-}
         </style>
         <!--[if lte IE 8]>
             <script src="../js/html5.js"></script>
@@ -118,7 +105,7 @@ input::-webkit-validation-bubble-arrow {
         <div id="container">
             <header role="banner">
                 <h1>HTML5 Forms styling and input <a href="http://robertnyman.com/html5">- To: Information and samples for HTML5 and related APIs</a></h1>
-                <p>Form styling and input control in HTML5.</p>
+                <p>Form styling and input comntrol in HTML5.</p>
             </header>
 
             <div role="main">
@@ -133,7 +120,7 @@ input::-webkit-validation-bubble-arrow {
 
                         <div>
                             <h3>required</h3>
-                            <div><input type="text" name="user-input" required></div>
+                            <div><input type="text" name="user-input" value="Bruce Lawson" required></div>
                         </div>
     
                         <div>
@@ -149,30 +136,8 @@ input::-webkit-validation-bubble-arrow {
                         </div>
 
                         <div>
-                            <h3>Custom validation message presentation</h3>
-                            <div><input type="text" name="user-input" class="custom-validation-ui" autofocus required></div>
-                        </div>
-
-                        <div>
                             <h3>mozactionhint, for keyboard labeling on mobile decives</h3>
                             <div><input type="text" mozactionhint="Next"></div>
-                        </div>
-    
-                        <div>
-                            <h3>range</h3>
-                            <div>
-                                <input type="range" id="da-range">
-                                <output id="da-range-output"></output>
-                                <script>
-                                    (function () {
-                                        var range = document.getElementById("da-range"),
-                                            output = document.getElementById("da-range-output");
-                                         range.addEventListener("input", function () {
-                                             output.value = this.value;
-                                         }, false);
-                                    })();
-                                </script>
-                            </div>
                         </div>
     
                         <div class="form-submit">

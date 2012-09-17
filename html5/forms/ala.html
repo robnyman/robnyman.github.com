@@ -1,0 +1,219 @@
+Forms on the web. They are literally everywhere, and there seem to really be all kind of flavors for them. From day one they have been a great mean for users to input data and information and interact with various services. And what comes with that is every implementation under the sun to offer validation for them, custom display and functionality if they aren't native in that specific web browser and much much more. Therefore, during the development phase of HTML5, one of the important things that have been looked into is making forms on the web evolve into what both end users and developers need to make things easier. Why would every web developer have to invent the wheel again or include tons of JavaScript code just to make something very basic like a datepicker work?
+
+Let's leave that behind us and explore all the new additions to forms in HTML5!
+
+There are basically five areas of improvements when it comes to form features in HTML5:
+
+<ul>
+    <li>New input types</li>
+    <li>New attributes</li>
+    <li>New elements</li>
+    <li>Validation</li>
+    <li>APIs, such as the File API</li>
+</ul>
+
+In this article I will cover the first three of them and what it means for you as web developer. To get a good introduction to HTML5 form validation, I recommend the A List Apart article <a href="http://www.alistapart.com/articles/forward-thinking-form-validation/">Forward Thinking Form Validation</a>.
+
+
+<h2>New input types</h2>
+
+These are the new input types in HTML5. Some of them are directly connected to be displayed in a certain way in the web browser, where others are mor ethere for semantic value and/or connected to validation of them.
+
+<dl>
+    <dt>color</dt>
+    <dd>Gives the end user a native color picker to choose a color.</dd>
+    <dt>date</dt>
+    <dd>Offers a datepicker.</dd>
+    <dt>datetime</dt>
+    <dd>An element to choose both date and time.</dd>
+    <dt>datetime-local</dt>
+    <dd>An element to choose both date and time, with local settings support.</dd>
+    <dt>email</dt>
+    <dd>A filed for entering e-mail address(es).</dd>
+    <dt>month</dt>
+    <dd>Choose a full month.</dd>
+    <dt>number</dt>
+    <dd>Picking a number.</dd>
+    <dt>range</dt>
+    <dd>Offers a slider to set to a certain value/position.</dd>
+    <dt>search</dt>
+    <dd>A field for search queries.</dd>
+    <dt>tel</dt>
+    <dd>Choosing a telephone number.</dd>
+    <dt>time</dt>
+    <dd>Input a certain time.</dd>
+    <dt>url</dt>
+    <dd>Entering a URL.</dd>
+    <dt>week</dt>
+    <dd>Picking a specific week.</dd>
+</dl>
+
+<h3>Examples</h3>
+
+Examples of these new input types, with sample or expected value (or read out value after form submission) set in their respective value attribute:
+
+<pre>&lt;input type="color" value="%23b97a57"&gt;</pre>
+<pre>&lt;input type="date" value="2011-06-08"&gt;</pre>
+<pre>&lt;input type="datetime" value="2011-06-09T20:35:34.32"&gt;</pre>
+<pre>&lt;input type="datetime-local" value="2011-06-09T22:41"&gt;</pre>
+<pre>&lt;input type="email" value="robert@robertnyman.com"&gt;</pre>
+<pre>&lt;input type="month" value="2011-06"&gt;</pre>
+<pre>&lt;input type="number" value="4"&gt;</pre>
+<pre>&lt;input type="range" value="15"&gt; Note: If not set, default attribute values are min=0, max=100, step="1".</pre>
+<pre>&lt;input type="search" value="[Any search text]"&gt;</pre>
+<pre>&lt;input type="tel" value="[Any numeric value]"&gt; Note: Most web browsers seem to let through any value at this time.</pre>
+<pre>&lt;input type="time" value="22:38"&gt;</pre>
+<pre>&lt;input type="url" value="http://robertnyman.com"&gt; Note: requires http:// in the beginning.</pre>
+<pre>&lt;input type="week" value="2011-W24"&gt;</pre>
+
+
+<h2>New attributes</h2>
+
+To complement the new input types, there are a number of new attributes for actions web developers often need:
+
+<dl>
+    <dt>autocomplete</dt>
+    <dd>An option to turn off automatic form completion of values for a field. Possible values are "on" and "off".</dd>
+    <dt>autofocus</dt>
+    <dd>Whether focus should be set to this field as soon as it has loaded.</dd>
+    <dt>formaction</dt>
+    <dd>For buttons that submit a form (e.g. &lt;input type="submit"&gt;, &lt;input type="image"&gt; and &lt;button&gt; elements) to be able to override the action attribute of the form, for instance if different buttons should submit the form to different URLs.</dd>
+    <dt>formenctype</dt>
+    <dd>For buttons that submit a form to be able to override the form's specified encoding</dd>
+    <dt>formmethod</dt>
+    <dd>For buttons that submit a form to be able to override the form's method attribute, in case a button should change the method.</dd>
+    <dt>formnovalidate</dt>
+    <dd>Append to a submit button to bypass form validation.</dd>
+    <dt>formtarget</dt>
+    <dd>For buttons that submit a form to be able to override the form's target attribute.</dd>
+    <dt>list</dt>
+    <dd>To connect with a &lt;datalist&gt; element by its id, to use its &lt;option&gt; elements as suggestions.</dd>
+    <dt>max</dt>
+    <dd>Maximum value for the value that can be put in.</dd>
+    <dt>min</dt>
+    <dd>Minimum value for the value that can be put in.</dd>
+    <dt>multiple</dt>
+    <dd>Allows for selection of multiple files for &lt;input type="file"&gt; elements, and for multiple e-mail addresses separated by a comma.</dd>
+    <dt>novalidate</dt>
+    <dd>Applies only to the &lt;form&gt; element, and prevents a form from being validated before submitted.</dd>
+    <dt>pattern</dt>
+    <dd>Declaring what pattern should be used for validating a field's value, in the form of a regular expression.</dd>
+    <dt>placeholder</dt>
+    <dd>Meant to be able to display a hint to the end user what to input. (Side note: I wrote <a href="http://robertnyman.com/2011/05/02/html5-placeholder-and-an-alternative-approach-introducing-roberts-playground/">a blog post discussing the desired behavior of the placeholder attribute</a>)</dd>
+    <dt>readonly</dt>
+    <dd>If a filed should be readonly.</dd>
+    <dt>required</dt>
+    <dd>For validation purposes, if a field is required or not.</dd>
+    <dt>spellcheck</dt>
+    <dd>Lets the web browser know if it should spell check the contents or not. </dd>
+    <dt>step</dt>
+    <dd>Possibility to control the size of each step for elements that accepts number or date input.</dd>
+</dt>
+
+<h3>Examples</h3>
+
+Examples of the new attributes:
+
+<pre>&lt;input type="text" autocomplete="off"&gt;</pre>
+<pre>&lt;input type="text" autofocus&gt;</pre>
+<pre>&lt;input type="submit" formaction="http://example.org/save" value="Save"&gt;</pre>
+<pre>&lt;input type="submit" formenctype="application/x-www-form-urlencoded" value="Save with enctype"&gt;</pre>
+<pre>&lt;input type="submit" formmethod="POST" value="Send as POST"&gt;</pre>
+<pre>&lt;input type="submit" formnovalidate value="Don't validate"&gt;</pre>
+<pre>&lt;input type="submit" formtarget="_blank" value="Post to new tab/window"&gt;</pre>
+<pre>&lt;input type="text" list="characters"&gt; Note: See a complete example in the New elements section.</pre>
+<pre>&lt;input type="range" max="95"&gt;</pre>
+<pre>&lt;input type="range" min="2"&gt;</pre>
+<pre>&lt;input type="file" multiple&gt;</pre>
+<pre>&lt;form action="http://example.org" method="GET" novalidate&gt;</pre>
+<pre>&lt;input type="text" pattern="[A-Z]*"&gt; Note: It is case sensitive, so you need to supply both lower- and upper-case letters if you want to allow that.</pre>
+<pre>&lt;input type="placeholder" name="first-name" placeholder="E.g. John Locke"&gt;</pre>
+<pre>&lt;input type="text" readonly&gt;</pre>
+<pre>&lt;input type="text" required&gt;</pre>
+<pre>&lt;input type="text" spellcheck="true"&gt; Note: Has to be set to true or false, just an attribute present doesn't work</pre>
+<pre>&lt;input type="number" step="3"&gt;</pre>
+
+
+<h2>New elements</h2>
+
+<dl>
+    <dt>datalist</dt>
+    <dd>Contains a number of &lt;option&gt; elements with values that can be accessed from other form elements through the usage of the list attribute.</dd>
+    <dt>keygen</dt>
+    <dd>Offers a way to create a public/private key pair where the public key is sent with the form. (Ok, I'll be honest - probably not the new element that will get you the most excited...)</dd>
+    <dt>meter</dt>
+    <dd>The meter element is for displaying values on a bar, where you can custom control min, max and assigned value. You can also specify low, high and optimum to set up different kind of areas of the bar. </dd>
+    <dt>output</dt>
+    <dd>Dedicated to output the result of a calculation in the page, for instance sliding a &lt;input type="range"&gt; back and forth.</dd>
+    <dt>progress</dt>
+    <dd>Meant to be used to indicate progress of any kind in a web page, for instance file upload progress.</dd>
+</dl>
+
+<h3>Examples</h3>
+
+Example code of using these elements:
+
+Note that the value attribute is the value being read out for its connected &lt;input&gt; element. In some web browsers, the value of the &lt;option&gt; element, if set, overrides the value attribute, in other web browsers only the value attribute is taken into consideration. So the best way to make it work is using the value attribute for suggestions.
+
+<pre>
+&lt;input type="text" name="characters" list="data-list"&gt;
+&lt;datalist id="data-list"&gt;
+    &lt;option value="Hugo Reyes"&gt;
+    &lt;option value="Jack Shephard"&gt;
+    &lt;option value="James 'Sawyer' Ford"&gt;
+    &lt;option value="John Locke"&gt;
+    &lt;option value="Sayid Jarrah"&gt;
+&lt;/datalist&gt;
+</pre>
+
+<pre>
+&lt;keygen name="key"&gt;&lt;/keygen&gt;
+</pre>
+
+
+Important to note for the &lt;output&gt; element is that support for the JavaScript event oninput for the &lt;form&gt; element is required (it used to be an onforminput event on the &lt;output&lt; but that has now been deprecated). The code in the example below detects whter there is existing support for the oninput event, and if yes, applies an event handler that updates the value of the &lt;output&gt; element according to the value set for the &lt;input type="range"&gt; element.
+
+<pre>
+&lt;meter min="0" max="10" value="7"&gt;&lt;/meter&gt;
+
+&lt;input type="range" id="range" name="range"&gt;
+&lt;output for="range" id="output"&gt;&lt;/output&gt;
+
+&lt;script&gt;
+(function () {
+	var theForm = document.getElementById("the-form");
+	if ("oninput" in theForm) {
+		theForm.addEventListener("input", function () {
+		output.value = range.value;
+	}, false);
+	}
+})();
+&lt;/script&gt;
+</pre>
+
+<pre>
+&lt;progress max="100" value="70"&gt;70%&lt;/progress&gt;
+</pre>
+
+<h2>Web browser support</h2>
+
+As you can imagine, web browse support for such a vast amont of different features is varying. Another factor that plays in is that there's room for interpretation in the specifications how some form elements should be displayed, and the expected behavior of them. There are a few compatibility lists that I like and I recommend taking a look at:
+
+<ul>
+    <li><a href="http://wufoo.com/html5/">The Current State of HTML5 Forms</a></li>
+    <li><a href="http://www.quirksmode.org/html5/inputs.html">HTML5 tests - inputs</a></li>
+    <li><a href="http://www.quirksmode.org/html5/inputs_mobile.html">HTML5 tests - inputs (mobile)</a></li>
+</ul>
+
+
+
+<h2>Mobile improvements</h2>
+
+One important thing to also bear in mind is with all the myriad of of mobile devices, tablets et al, is that while there might not necessarily be support for a certain input type, by using it could trigger the most appropriate keyboard layout to make inputing information as smooth as possible for the end user. This means a number keyboard layout for &lt;input type="number"&gt;, URL layout for &lt;input type="url"&gt; etc.
+
+
+
+
+<h2>Demos</h2>
+
+<h2>Downside: styling</h2>
