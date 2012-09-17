@@ -186,8 +186,8 @@
 							
 							// Set appropriate headers
 							xhr.setRequestHeader("Content-Type", "multipart/form-data");
-							xhr.setRequestHeader("X-File-Name", file.fileName);
-							xhr.setRequestHeader("X-File-Size", file.fileSize);
+							xhr.setRequestHeader("X-File-Name", file.name);
+							xhr.setRequestHeader("X-File-Size", file.size);
 							xhr.setRequestHeader("X-File-Type", file.type);
 
 							// Send the file (doh)
@@ -310,8 +310,8 @@
 		
 		// Set appropriate headers
 		xhr.setRequestHeader("Content-Type", "multipart/form-data");
-		xhr.setRequestHeader("X-File-Name", file.fileName);
-		xhr.setRequestHeader("X-File-Size", file.fileSize);
+		xhr.setRequestHeader("X-File-Name", file.name);
+		xhr.setRequestHeader("X-File-Size", file.size);
 		xhr.setRequestHeader("X-File-Type", file.type);
 
 		// Send the file (doh)
