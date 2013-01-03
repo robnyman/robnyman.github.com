@@ -34,7 +34,7 @@
     var fullscreenState = document.getElementById("fullscreen-state");
     if (fullscreenState) {
         document.addEventListener("fullscreenchange", function () {
-            fullscreenState.innerHTML = (document.fullscreen)? "" : "not ";
+            fullscreenState.innerHTML = (document.fullscreenElement)? "" : "not ";
         }, false);
         
         document.addEventListener("mozfullscreenchange", function () {
