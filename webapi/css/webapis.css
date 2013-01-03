@@ -104,12 +104,16 @@ ul {
 	box-shadow: 1px 1px 10px #000;
 }
 
-@media screen and (max-width: 320px) {
-    #container {
-        width: 280px;
-        padding: 10px;
+/* Responsive */
+@media screen and (max-width: 640px) {
+    .container {
+        min-width: 80%;
+        max-width: 80%;
+        width: 80%;
+        border-width: 0;
     }
 }
+
 
 button {
     display: block;

@@ -1,4 +1,8 @@
 (function () {
+    document.querySelector("#reload").onclick = function () {
+        location.reload(true);
+    };
+
     var deviceStorage = navigator.getDeviceStorage("videos");
     console.log("deviceStorage: " + deviceStorage);
 
@@ -72,4 +76,21 @@
         online = connection.bandwidth > 0,
         metered = connection.metered; 
     console.log("mozConnection.online: " + online);
+
+    var contact = new mozContact();
+     contact.init({
+        name: "Tom"}
+    );
+      var request = navigator.mozContacts.save(contact);
+     request.onsuccess = function() {
+        console.log("Contact success");
+     };
+      request.onerror = function() {
+        console.log("Contact error")
+     };
+
+    var notification = navigator.mozNotification;
+    console.log(notification.createNotification);
+
+    notification.createNotification("See this", "This is a notification");
 })();
