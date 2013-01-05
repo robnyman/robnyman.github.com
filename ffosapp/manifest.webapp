@@ -1,14 +1,14 @@
 {
   "version": "0.0.01",
   "name": "Stub app",
-  "launch_path": "/fxosstub/index.html",
+  "launch_path": "index.html",
   "description": "Simple stub app",
   "icons": {
-    "16": "/fxosstub//applogos/logo16.png",
-    "32": "/fxosstub//applogos/logo32.png",
-    "48": "/fxosstub//applogos/logo48.png",
-    "64": "/fxosstub//applogos/logo64.png",
-    "128": "/fxosstub//applogos/logo128.png"
+    "16": "applogos/logo16.png",
+    "32": "applogos/logo32.png",
+    "48": "applogos/logo48.png",
+    "64": "applogos/logo64.png",
+    "128": "applogos/logo128.png"
   },
   "developer": {
     "name": "Robert Nyman",
