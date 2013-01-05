@@ -1,14 +1,14 @@
 {
   "version": "0.0.01",
   "name": "Stub app",
-  "launch_path": "index.html",
+  "launch_path": "/ffosapp/index.html",
   "description": "Simple stub app",
   "icons": {
-    "16": "applogos/logo16.png",
-    "32": "applogos/logo32.png",
-    "48": "applogos/logo48.png",
-    "64": "applogos/logo64.png",
-    "128": "applogos/logo128.png"
+    "16": "/ffosapp/applogos/logo16.png",
+    "32": "/ffosapp/applogos/logo32.png",
+    "48": "/ffosapp/applogos/logo48.png",
+    "64": "/ffosapp/applogos/logo64.png",
+    "128": "/ffosapp/applogos/logo128.png"
   },
   "developer": {
     "name": "Robert Nyman",
