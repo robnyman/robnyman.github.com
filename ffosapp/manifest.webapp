@@ -1,0 +1,19 @@
+{
+  "version": "0.0.01",
+  "name": "Stub app",
+  "launch_path": "/fxosstub/index.html",
+  "description": "Simple stub app",
+  "icons": {
+    "16": "/fxosstub//applogos/logo16.png",
+    "32": "/fxosstub//applogos/logo32.png",
+    "48": "/fxosstub//applogos/logo48.png",
+    "64": "/fxosstub//applogos/logo64.png",
+    "128": "/fxosstub//applogos/logo128.png"
+  },
+  "developer": {
+    "name": "Robert Nyman",
+    "url": "http://robertnyman.com"
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "en"
+}
