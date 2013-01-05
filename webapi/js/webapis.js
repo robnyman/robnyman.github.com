@@ -92,5 +92,8 @@
     var notification = navigator.mozNotification;
     console.log(notification.createNotification);
 
-    notification.createNotification("See this", "This is a notification");
+    notification.createNotification(
+        "See this", 
+        "This is a notification"
+    );
 })();
