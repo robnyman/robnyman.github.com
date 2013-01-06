@@ -1,0 +1,129 @@
+html, body, button {
+  font: 10px "Open Sans", sans-serif;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f3f3f4;
+}
+
+header {
+  background: #000;
+  color: #fff;
+  height: 4.9rem;
+  position: relative;
+  z-index: 2;
+}
+
+header .install-reload button {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  margin: 1.4rem 0 0;
+}
+
+header #install {
+  display: none;
+}
+
+header #install.show {
+  display: inline;
+}
+
+header h1 {
+  font: normal 2.2rem/4.9rem "Open Sans", sans-serif;
+  height: 100%;
+  margin: 0 0 0 2rem;
+  padding: 0 0 0 0.1rem;
+  white-space: nowrap;
+}
+
+header ul {
+  float: right;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+header li {
+  float: left;
+  list-style: none;
+  min-width: 6rem;
+  padding: 0rem 0.5rem 0rem 0.5rem;
+  text-align: center;
+  width: auto;
+  height: 100%;
+}
+
+header li:active {
+  background-color: #e66000;
+}
+
+#main {
+  padding: 2rem 1rem 6rem 1rem;
+}
+
+#main img {
+  max-width: 100%;
+}
+
+footer {
+  background: -moz-linear-gradient(top,#6a7b86 0%,#424f5a 100%);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#6a7b86),color-stop(100%,#424f5a));
+  background: -webkit-linear-gradient(top,#6a7b86 0%,#424f5a 100%);
+  background: -o-linear-gradient(top,#6a7b86 0%,#424f5a 100%);
+  background: -ms-linear-gradient(top,#6a7b86 0%,#424f5a 100%);
+  background: linear-gradient(top,#6a7b86 0%,#424f5a 100%);
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  height: 5rem;
+  bottom: 0;
+}
+
+footer ul {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height:100%;
+}
+
+footer li {
+  /* background: url("images/separator.png") no-repeat scroll left top; */
+  float: left;
+  border-right: 1px solid #445;
+  width: 33%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  text-align: center;
+}
+
+footer li button {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  height: 100%;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+footer li.activated {
+  background: #b4beca;
+  background: -moz-linear-gradient(top,#b4beca 0%,#e1e5eB 100%);
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#b4beca),color-stop(100%,#e1e5eB));
+  background: -webkit-linear-gradient(top,#b4beca 0%,#e1e5eB 100%);
+  background: -o-linear-gradient(top,#b4beca 0%,#e1e5eB 100%);
+  background: -ms-linear-gradient(top,#b4beca 0%,#e1e5eB 100%);
+  background: linear-gradient(top,#b4beca 0%,#e1e5eB 100%);
+}
+
+footer li:active {
+  background:#e66000;
+}
+
+footer li:last-child {
+  border:none;
+}
