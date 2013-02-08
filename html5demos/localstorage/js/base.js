@@ -53,7 +53,6 @@
     else {
         // Create XHR, BlobBuilder and FileReader objects
         var xhr = new XMLHttpRequest(),
-            blobBuilder = new (window.BlobBuilder || window.MozBlobBuilder || window.WebKitBlobBuilder || window.OBlobBuilder || window.msBlobBuilder),
             blob,
             fileReader = new FileReader();
 
@@ -63,10 +62,8 @@
 
         xhr.addEventListener("load", function () {
             if (xhr.status === 200) {
-                // Append the response to the BlobBuilder
-                blobBuilder.append(xhr.response);
-                // Create a blob with the desired MIME type
-                blob = blobBuilder.getBlob("image/png");
+                // Create a blob from the response
+                blob = new Blob([xhr.response], {type: "image/png"});
 
                 // onload needed since Google Chrome doesn't support addEventListener for FileReader
                 fileReader.onload = function (evt) {
