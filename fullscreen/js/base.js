@@ -6,6 +6,9 @@
             if (docElm.requestFullscreen) {
                 docElm.requestFullscreen();
             }
+            else if (docElm.msRequestFullscreen) {
+                docElm.msRequestFullscreen();
+            }
             else if (docElm.mozRequestFullScreen) {
                 docElm.mozRequestFullScreen();
             }
@@ -21,6 +24,9 @@
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             }
+            else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
             else if (document.mozCancelFullScreen) {
                 document.mozCancelFullScreen();
             }
@@ -35,6 +41,10 @@
     if (fullscreenState) {
         document.addEventListener("fullscreenchange", function () {
             fullscreenState.innerHTML = (document.fullscreenElement)? "" : "not ";
+        }, false);
+        
+        document.addEventListener("msfullscreenchange", function () {
+            fullscreenState.innerHTML = (document.msFullscreenElement)? "" : "not ";
         }, false);
         
         document.addEventListener("mozfullscreenchange", function () {
@@ -53,6 +63,9 @@
         videoFullscreen.addEventListener("click", function (evt) {
             if (marioVideo.requestFullscreen) {
                 marioVideo.requestFullscreen();
+            }
+            else if (marioVideo.msRequestFullscreen) {
+                marioVideo.msRequestFullscreen();
             }
             else if (marioVideo.mozRequestFullScreen) {
                 marioVideo.mozRequestFullScreen();
