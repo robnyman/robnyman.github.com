@@ -42,7 +42,8 @@
             console.log("Putting elephants in IndexedDB");
 
             // Open a transaction to the database
-            var transaction = db.transaction(["elephants"], IDBTransaction.READ_WRITE);
+            var readWriteMode = typeof IDBTransaction.READ_WRITE == "undefined" ? "readwrite" : IDBTransaction.READ_WRITE;
+            var transaction = db.transaction(["elephants"], readWriteMode);
 
             // Put the blob into the dabase
             var put = transaction.objectStore("elephants").put(blob, "image");
