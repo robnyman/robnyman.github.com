@@ -20,8 +20,10 @@
                     // Set img src to ObjectURL
                     showPicture.src = imgURL;
 
-                    // Revoke ObjectURL
-                    URL.revokeObjectURL(imgURL);
+                    // Revoke ObjectURL after imagehas loaded
+                    showPicture.onload = function() {
+                        URL.revokeObjectURL(imgURL);  
+                    };
                 }
                 catch (e) {
                     try {
