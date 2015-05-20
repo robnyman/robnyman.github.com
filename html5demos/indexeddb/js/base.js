@@ -64,7 +64,9 @@
                 imgElephant.setAttribute("src", imgURL);
 
                 // Revoking ObjectURL
-                URL.revokeObjectURL(imgURL);
+                imgElephant.onload = function() {
+                    window.URL.revokeObjectURL(this.src);
+                }
             };
         };
 
