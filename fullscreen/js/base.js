@@ -7,6 +7,7 @@
                 docElm.requestFullscreen();
             }
             else if (docElm.msRequestFullscreen) {
+                docElm = document.body; //overwrite the element (for IE)
                 docElm.msRequestFullscreen();
             }
             else if (docElm.mozRequestFullScreen) {
